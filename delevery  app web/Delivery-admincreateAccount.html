@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tailwind.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <title>DeliveryAdmin - Accueil</title>
+
+</head>
+<body>
+    <nav class="bg-purple-500 shadow-lg">
+		<div class="max-w-6xl mx-auto px-4">
+			<div class="">
+				<div class="flex space-x-7 justify-between">
+					<!-- Website Logo -->
+					<div>
+						<a href="#" class="flex items-center py-4 px-2">
+							
+							<span class="font-semibold text-white text-lg">Delivery App</span>
+						</a>
+					</div>
+					<!-- Primary Navbar items -->
+					<div class="hidden md:flex items-center left-full space-x-1">
+						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-30">Accueil</a>
+						<a
+							href=""
+							class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300"
+							>Profil</a
+						>
+                        <a
+							href=""
+							class="py-5 px-2  font-semibold text-black border-b-4 border-black"
+							>Creer compte</a
+						>
+						<a
+							href=""
+							class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300"
+							>Aide</a
+						>
+						<a
+							href=""
+							class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300"
+							>Deconnexion</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+    <div class="flex-col flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="">
+            <h3 class="text-2xl text-purple-500  font-bold p-3 text-center">Creer un Compte</h3>
+        </div>
+
+        <div class="px-5 py-5 mt-2 text-left items-center w-2/5  bg-white border-purple-500  border-1 rounded-2xl shadow-lg">
+            
+            <form action="">
+                <div class="mt-4 p-5">
+                    <div class="input-icons flex mt-4 px-2 py-2 w-full">
+                        <div class="p-2">
+                            <input class="input-field shadow-lg w-full p-2  border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Nom">
+                            
+                        </div>
+                        <div class="p-2">
+                            <input class="input-field shadow-lg p-2 w-full  border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Prenom">
+                        </div>
+
+                    </div>
+
+                    <div class="input-icons flex mt-4 px-2 py-2">
+                        
+                        <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="email" placeholder="Email">
+                    </div>
+                    <div class="input-icons flex mt-4 px-2 py-2">
+                      
+                        <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="number" placeholder="Telephone">
+                    </div>
+                    <div class="input-icons flex mt-4 px-2 py-2">
+                        <div class="p-2">
+                            <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="password" placeholder="Password">
+                        </div>
+                        <div class="p-2">    
+                            <input class="input-field  shadow-lg p-2  w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="password" placeholder="Confirmer">
+                         </div>   
+                    </div>
+                    <div class="input-icons flex mt-4 px-2 py-2">
+                        
+                        <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Adresse">
+                    </div>
+                    <div class="input-icons flex mt-4 px-3 py-3">
+                        <label class="p-2 items-center">
+                            <input type="radio" class="form-radio text-purple-500" name="radio" value="2">
+                            <span class="ml-2">Client</span>
+                          </label>
+                          <label class="p-2 items-center">
+                            <input type="radio" class="form-radio" name="radio" value="2">
+                            <span class="ml-2">Livreur</span>
+                          </label>
+                           <label class=" p-2 items-center">
+                            <input type="radio" class="form-radio  text-indigo-600" name="radio" value="2">
+                            <span class="ml-2">Admistrateur</span>
+                          </label>
+                    </div>
+                
+                    <div class="flex items-center justify-center mt-4 pt-2  py-3">
+                        <button class="px-6 py-2 mt-4 text-white bg-purple-500 rounded-xl  hover:bg-purple-900">Creer</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

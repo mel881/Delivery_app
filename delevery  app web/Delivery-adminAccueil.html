@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <title>DeliveryAdmin - Accueil</title>
+
+</head>
+<body>
+
+    <nav class="bg-purple-500 shadow-lg">
+		<div class="max-w-6xl mx-auto px-4">
+			<div class="">
+				<div class="flex space-x-7 justify-between">
+					<!-- Website Logo -->
+					<div>
+						<a href="#" class="flex items-center py-4 px-2">
+
+							<span class="font-semibold text-white text-lg">Delivery App</span>
+						</a>
+					</div>
+					<!-- Primary Navbar items -->
+					<div class="hidden md:flex items-center left-full space-x-1">
+						<a href="" class="py-5 px-2 text-black border-b-4 border-black font-semibold">Accueil</a>
+						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Profil</a>
+                        <a href="" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Creer compte</a>
+						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Aide</a>
+						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Deconnexion</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+    <div class="mx-auto mt-4 ">
+        <!-- Tabs -->
+        <div id="tabs" class=" pt-2 px-5 w-full shadow-lg flex justify-between ">
+          <span class="bg-white px-4 text-gray-800 font-semibold py-2  w-full border-b-2  border-purple-500  border-black -mb-px"><a id="default-tab" href="#first">Livraisons</a></span>
+          <span class="px-4 text-gray-800 font-semibold py-2 w-full border-b-2  border-black rounded-t"><a href="#second">Espace Clients</a></span>
+          <span class="px-4 text-gray-800 font-semibold py-2 w-full  border-b-2 border-black rounded-t"><a href="#third">Espace Livreur</a></span>
+        </div>
+      
+        <!-- Tab Contents -->
+        <div id="tab-contents">
+          <div id="first" class="p-4">
+            
+                <table class="w-full ">
+                  <thead>
+                  </thead>
+                  <tbody class="bg-white ">
+                    <tr class="text-gray-700 border-b rounded-xl ">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm ">
+                          
+                          <div>
+                            <p class="font-bold text-black">Big Burger</p>
+                            <p class="text-xs text-gray-300">Ordered on Mon 11</p>
+                          </div>
+                        </div>
+                      </td>
+                      
+                      <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-200 rounded-xl"> Non acceptée </span>
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700 border-b rounded-xl">
+                        <td class="px-4 py-3">
+                          <div class="flex items-center text-sm ">
+                            
+                            <div>
+                              <p class="font-bold text-black">Big Burger</p>
+                              <p class="text-xs text-gray-300">Ordered on Mon 11</p>
+                            </div>
+                          </div>
+                        </td>
+                        
+                        <td class="px-4 py-3 text-xs">
+                          <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-200 rounded-xl"> Terminée</span>
+                        </td>
+                   </tr>
+                   <tr class="text-gray-700 border-b rounded-xl ">
+                        <td class="px-4 py-3">
+                          <div class="flex items-center text-sm ">
+                            
+                            <div>
+                              <p class="font-bold text-black">Big Burger</p>
+                              <p class="text-xs text-gray-300">Ordered on Mon 11</p>
+                            </div>
+                          </div>
+                        </td>
+                        
+                        <td class="px-4 py-3 text-xs">
+                          <span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-200 rounded-xl"> Encours </span>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+          </div>
+          <div id="second" class="hidden p-4">
+            <table class="w-full">
+                <thead>
+                  
+                </thead>
+                <tbody class="bg-white">
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Modifiée </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"> Desactivée </span>
+                      </td>
+                  </tr>
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Modifiée </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"> Desactivée </span>
+                      </td>
+                  </tr>
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight  rounded-xl"> </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Activée</span>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+          <div id="third" class="hidden p-4">
+            <table class="w-full">
+                <thead>
+                  
+                </thead>
+                <tbody class="bg-white">
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Modifiée </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"> Desactivée </span>
+                      </td>
+                  </tr>
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Modifiée </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"> Desactivée </span>
+                      </td>
+                  </tr>
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight  rounded-xl"> </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"> Activée</span>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+          
+        </div>
+      </div>
+
+      <script>
+
+                let tabsContainer = document.querySelector("#tabs");
+
+                let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
+
+                console.log(tabTogglers);
+
+                tabTogglers.forEach(function(toggler) {
+                toggler.addEventListener("click", function(e) {
+                    e.preventDefault();
+
+                    let tabName = this.getAttribute("href");
+
+                    let tabContents = document.querySelector("#tab-contents");
+
+                    for (let i = 0; i < tabContents.children.length; i++) {
+                    
+                    tabTogglers[i].parentElement.classList.remove("border-purple-500","-mb-px");  tabContents.children[i].classList.remove("hidden");
+                    if ("#" + tabContents.children[i].id === tabName) {
+                        continue;
+                    }
+                    tabContents.children[i].classList.add("hidden","border-black");
+                    
+                    }
+                    e.target.parentElement.classList.add("border-purple-500","-mb-px");
+                });
+                });
+
+      </script>
+
+    
+</body>
+</html>

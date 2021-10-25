@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="tailwind.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    </head>
+    <style>
+        .input-icons i {
+            position: absolute;
+            padding: 10px;
+            
+        }
+          
+        .input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+          
+        .icon {
+            padding: 10px;
+            min-width: 40px;
+        }
+          
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div class="flex-col flex items-center justify-center min-h-screen bg-gray-100">
+            <div class="">
+                <h2 class="text-2xl text-purple-500  font-bold p-3 text-center">Delivery App-Admin</h2>
+            </div>
+
+            <div class="px-8 py-6 mt-4 text-left items-center w-2/5  bg-white border-purple-500  border-1 rounded-2xl shadow-lg">
+                <h3 class="text-2xl font-bold text text-center">Connexion</h3>
+                <form action="">
+                    <div class="mt-4 p-5">
+                        <div class="input-icons flex mt-4 px-3 py-3 w-full">
+                            <span class="flex items-center text-2xl text-purple-500 ">
+                                <i class="fas fa-user-circle"></i>
+                            </span>
+                            <input class="input-field shadow-lg text-center w-full  border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Username">
+                        </div>
+
+                        <div class="input-icons flex mt-4 px-3 py-3">
+                            <span class="flex items-center text-2xl text-purple-500 -p-2">
+                                <i class="fas fa-lock "></i>
+                            </span>
+                            <input class="input-field  shadow-lg text-center w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="password" placeholder="Password">
+                        </div>
+                        
+                        
+                       
+                        <div class="flex items-center justify-center mt-4 px-5 py-3">
+                            <button class="px-6 py-2 mt-4 text-white bg-purple-500 rounded-xl  hover:bg-purple-900">Connexion</button>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+            
+      
+
+    </body>
+</html>
