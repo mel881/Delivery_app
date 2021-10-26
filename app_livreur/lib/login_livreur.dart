@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'livreur_accueil.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -25,18 +26,6 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          bottom: const PreferredSize(
-              child: Text(
-                "Courier",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                  color: Colors.white,
-                  backgroundColor: Colors.red,
-                ),
-              ),
-              preferredSize: Size.fromHeight(100)),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(170),
@@ -83,7 +72,12 @@ class _LoginState extends State<Login> {
                   height: 24,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Accueil()),
+                    );
+                  },
                   child: const Text(
                     "Connexion",
                   ),
@@ -100,6 +94,7 @@ class _LoginState extends State<Login> {
   }
 }
 
+// fonction pour generer les inputs
 Widget input_field(String labelText, String hintText, bool obscur, Icon icon) {
   return Container(
     child: TextFormField(
