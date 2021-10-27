@@ -12,7 +12,6 @@ class Mel_test extends StatelessWidget {
 
 class Home extends StatefulWidget {
   final List<String> list = List.generate(10, (index) => "Text $index");
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -32,15 +31,14 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
           ),
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {
-                showSearch<String>(
-                    context: context, delegate: Search(widget.list));
-              },
-              icon: Icon(Icons.search),
-            )
-          ],
+           actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              showSearch(context: context, delegate: Search(widget.list));
+            },
+            icon: Icon(Icons.search),
+          )
+        ],
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(
@@ -138,7 +136,7 @@ class ListViewBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               trailing: Wrap(
@@ -160,12 +158,6 @@ class ListViewBuilder extends StatelessWidget {
               subtitle: Text('Created on 20 oct2021'),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
-      ),
     );
   }
 }
@@ -177,7 +169,7 @@ class ListViewBuilder1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               trailing: OutlinedButton(
@@ -190,12 +182,6 @@ class ListViewBuilder1 extends StatelessWidget {
               subtitle: Text('Created on 20 oct2021'),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
-      ),
     );
   }
 }
@@ -206,13 +192,13 @@ class ListViewBuilderEncours extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               trailing: Wrap(
                 spacing: 12, // space between two icons
                 children: <Widget>[
-                  Icon(
+                   Icon(
                     Icons.place,
                     color: Colors.grey,
                     size: 30,
@@ -228,12 +214,6 @@ class ListViewBuilderEncours extends StatelessWidget {
               subtitle: Text('Created on 20 oct2021'),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
-      ),
     );
   }
 }
@@ -244,7 +224,7 @@ class ListViewBuilderEnd extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               trailing: Wrap(
@@ -261,18 +241,12 @@ class ListViewBuilderEnd extends StatelessWidget {
               subtitle: Text('Created on 20 oct2021'),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
-      ),
     );
   }
 }
 // search bar;
 
-class Search extends SearchDelegate<String> {
+class Search extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -329,7 +303,7 @@ class Search extends SearchDelegate<String> {
             suggestionList[index],
           ),
           leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
-          onTap: () {
+          onTap: (){
             selectedResult = suggestionList[index];
             showResults(context);
           },
@@ -338,3 +312,6 @@ class Search extends SearchDelegate<String> {
     );
   }
 }
+
+
+
