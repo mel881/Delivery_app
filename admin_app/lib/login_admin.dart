@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'admin_app.dart';
 
-
-class CreateAccount extends StatefulWidget {
-  const CreateAccount({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
-  _CreateAccountState createState() => _CreateAccountState();
+  _LoginState createState() => _LoginState();
 }
 
-class _CreateAccountState extends State<CreateAccount> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +50,8 @@ class _CreateAccountState extends State<CreateAccount> {
                 input_field("Nom  d'utilisateur", "Entrez votre nom ", false,
                     const Icon(Icons.account_circle)),
                 const SizedBox(height: 16),
-                input_field("Email", "Entrez adresse votre adresse mail", false,
-                    const Icon(Icons.email)),
-                const SizedBox(height: 16),
-                input_field("Telephone", "Entrez votre numero de telephone", false,
-                    const Icon(Icons.phone)),
-                const SizedBox(height: 16),
                 input_field("Mot de passe", "Entrez votre mot de passe", true,
                     const Icon(Icons.lock)),
-                const SizedBox(height: 16),
-                input_field("Mot de passe", "Entrez votre mot de passe", true,
-                    const Icon(Icons.lock)),
-                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -83,8 +73,10 @@ class _CreateAccountState extends State<CreateAccount> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
                   },
                   child: const Text(
                     "Connexion",
