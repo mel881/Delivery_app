@@ -11,8 +11,7 @@ class Mel_test extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-   final List<String> list = List.generate(10, (index) => "Text $index");
-
+  final List<String> list = List.generate(10, (index) => "Text $index");
   @override
   _HomeState createState() => _HomeState();
 }
@@ -35,7 +34,7 @@ class _HomeState extends State<Home> {
            actions: <Widget>[
           IconButton(
             onPressed: () {
-              showSearch<String>(context: context, delegate: Search(widget.list));
+              showSearch(context: context, delegate: Search(widget.list));
             },
             icon: Icon(Icons.search),
           )
@@ -247,7 +246,7 @@ class ListViewBuilderEnd extends StatelessWidget {
 }
 // search bar;
 
-class Search extends SearchDelegate < String>{
+class Search extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
