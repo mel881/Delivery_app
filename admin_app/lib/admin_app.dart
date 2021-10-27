@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Mel_test extends StatelessWidget {
+class Admin_app extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,17 +11,19 @@ class Mel_test extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-  final List<String> list = List.generate(10, (index) => "Text $index");
+  
   @override
   _HomeState createState() => _HomeState();
 }
-
+  final List<String> list = List.generate(10, (index) => "Livraison $index");
+  List <String> stat=["encours","postée","terminée","En attente","encours"];
+  List <bool> status=[false,true,false,true,false];
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 1,
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
@@ -34,7 +36,7 @@ class _HomeState extends State<Home> {
            actions: <Widget>[
           IconButton(
             onPressed: () {
-              showSearch(context: context, delegate: Search(widget.list));
+              showSearch(context: context, delegate: Search(list));
             },
             icon: Icon(Icons.search),
           )
@@ -43,45 +45,52 @@ class _HomeState extends State<Home> {
             tabs: <Widget>[
               Tab(
                 child: Text(
-                  "Livraisons Postées",
-                  style: TextStyle(fontSize: 11),
+                  "Livraisons",
+                  style: TextStyle(fontSize: 12),
                 ),
               ),
               Tab(
                 child: Text(
-                  "En attente Du Livreur",
-                  style: TextStyle(fontSize: 11),
+                  "Espace livreurs",
+                  style: TextStyle(fontSize: 12),
                 ),
               ),
               Tab(
                 child: Text(
-                  "Livraisons En Cours",
-                  style: TextStyle(fontSize: 11),
+                  "Espace clients",
+                  style: TextStyle(fontSize: 12),
                 ),
               ),
-              Tab(
-                child: Text(
-                  "Livraisons Terminées",
-                  style: TextStyle(fontSize: 11),
-                ),
-              )
+              
             ],
           ),
         ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
-            children: const <Widget>[
+            children:<Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
                   color: Colors.deepPurple,
                 ),
-                child: Text(
-                  'Drawer Header',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
+                child:Column(
+                  
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    
+                    Icon(
+                    Icons.account_circle,size:80,color:Colors.white,
+                    ),
+                    Text(
+                      "Compte Admin",
+                      style:TextStyle(
+                        color:Colors.white,
+                        fontSize: 30,
+                      )
+                      
+                    )
+
+                  ]
                 ),
               ),
               ListTile(
@@ -104,24 +113,19 @@ class _HomeState extends State<Home> {
             Center(
                 child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: ListViewBuilder(),
+              home:statut(stat) ,
             )),
+           
             Center(
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: ListViewBuilder1(),
+                home: livreur(status),
               ),
             ),
             Center(
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: ListViewBuilderEncours(),
-              ),
-            ),
-            Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: ListViewBuilderEnd(),
+                home: livreur(status),
               ),
             ),
           ],
@@ -131,119 +135,82 @@ class _HomeState extends State<Home> {
   }
 }
 
-class ListViewBuilder extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+
+
+
+
+  Widget livreur(List <bool> status) {
     return Scaffold(
       body: ListView.builder(
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              trailing: Wrap(
-                spacing: 12, // space between two icons
+              leading: Icon(Icons.account_circle,
+              size:40,),
+
+              trailing: status[index]? OutlinedButton(
+                onPressed: () {
+                  print('Received click');
+                },
+                child:  Text("activé"),
+              )
+              : Wrap(
+                   spacing: 12, // space between two icons
                 children: <Widget>[
-                  Icon(
+                   Icon(
                     Icons.edit,
                     color: Colors.grey,
                     size: 30,
                   ),
-                  Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                    size: 30,
-                  ),
-                ],
-              ),
-              title: Text('BIG Burgur'),
-              subtitle: Text('Created on 20 oct2021'),
-            );
-          }),
-    );
-  }
-}
-
-// En attente du livreur
-
-class ListViewBuilder1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              trailing: OutlinedButton(
+                  OutlinedButton(
                 onPressed: () {
                   print('Received click');
                 },
-                child: const Text('Signature'),
+                child:  Text("desactivé"),
+              )
+                ],
               ),
-              title: Text('BIG Burgur'),
-              subtitle: Text('Created on 20 oct2021'),
+              
+              title: const Text('John Doe'),
+             // subtitle: Text('Created on 20 oct2021'),
             );
           }),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        // Add your onPressed code here!
+      },
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.deepPurple,
+    ),
     );
   }
-}
-
-// Livraison encours
-class ListViewBuilderEncours extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+// Livraison;
+Widget statut(List<String> stat){
+  return Scaffold(
       body: ListView.builder(
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              trailing: Wrap(
-                spacing: 12, // space between two icons
-                children: <Widget>[
-                   Icon(
-                    Icons.place,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                  Icon(
-                    Icons.account_circle,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                ],
+              trailing:  OutlinedButton(
+                onPressed: () {
+                  print('Received click');
+                },
+                child:  Text(stat[index]),
               ),
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
             );
           }),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        // Add your onPressed code here!
+      },
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.deepPurple,
+    ),
     );
-  }
 }
 
-// Livraison terminée
-class ListViewBuilderEnd extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              trailing: Wrap(
-                spacing: 12, // space between two icons
-                children: <Widget>[
-                  Icon(
-                    Icons.account_circle,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                ],
-              ),
-              title: Text('BIG Burgur'),
-              subtitle: Text('Created on 20 oct2021'),
-            );
-          }),
-    );
-  }
-}
 // search bar;
 
 class Search extends SearchDelegate {

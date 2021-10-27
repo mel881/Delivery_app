@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:admin_app/admin_app.dart';
 void main() {
-  runApp(Mel_test());
-}
+  runApp( Admin_app());
+}    
 
