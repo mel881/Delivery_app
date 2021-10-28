@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 
-class Mel_test extends StatelessWidget {
+class client_test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
+        primarySwatch: Colors.deepPurple,
+      ),
       debugShowCheckedModeBanner: false,
       home: Login(),
     );
@@ -76,58 +77,58 @@ class _HomeState extends State<Home> {
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
-            children: const <Widget>[
+            children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
                   color: Colors.deepPurple,
                 ),
-                child: Text(
-                  'Drawer Header',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Icon(
+                        Icons.account_circle,
+                        size: 80,
+                        color: Colors.white,
+                      ),
+                      Text("Compte Client",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ))
+                    ]),
               ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('Messages'),
-              ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('Profile'),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                title: Text('Paramétres'),
               ),
+              const ListTile(
+                leading: Icon(Icons.help),
+                title: Text('Aide'),
+              ),
+              const ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Deconnexion'),
+              )
             ],
           ),
         ),
         body: TabBarView(
           children: <Widget>[
             Center(
-                child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: ListViewBuilder(),
-            )),
-            Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: ListViewBuilder1(),
-              ),
+              child: ListViewBuilder(),
             ),
             Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: ListViewBuilderEncours(),
-              ),
+              child: ListViewBuilder1(),
             ),
             Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: ListViewBuilderEnd(),
-              ),
+              child: ListViewBuilderEncours(),
+            ),
+            Center(
+              child: ListViewBuilderEnd(),
             ),
           ],
         ),
@@ -165,7 +166,6 @@ class ListViewBuilder extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -195,7 +195,6 @@ class ListViewBuilder1 extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -233,7 +232,6 @@ class ListViewBuilderEncours extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -266,7 +264,6 @@ class ListViewBuilderEnd extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),

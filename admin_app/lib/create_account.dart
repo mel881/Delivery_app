@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CreateAccount extends StatefulWidget {
   const CreateAccount({Key? key}) : super(key: key);
 
@@ -12,26 +11,19 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(180),
-        child: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: const Center(
-            child: Text(
-              "Delivery-App",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-              ),
-            ),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(170),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: const Center(
+          child: Text(
+            "Delivery-App",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
             ),
           ),
         ),
+       
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -40,7 +32,7 @@ class _CreateAccountState extends State<CreateAccount> {
             child: Column(
               children: [
                 const Text(
-                  "Connectez-vous",
+                  "Creez un compte",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -53,41 +45,24 @@ class _CreateAccountState extends State<CreateAccount> {
                 input_field("Email", "Entrez adresse votre adresse mail", false,
                     const Icon(Icons.email)),
                 const SizedBox(height: 16),
-                input_field("Telephone", "Entrez votre numero de telephone", false,
-                    const Icon(Icons.phone)),
+                input_field("Telephone", "Entrez votre numero de telephone",
+                    false, const Icon(Icons.phone)),
+                const SizedBox(height: 16),
+                input_field("Adresse", "Entrez votre adresse", false,
+                    const Icon(Icons.location_city)),
                 const SizedBox(height: 16),
                 input_field("Mot de passe", "Entrez votre mot de passe", true,
                     const Icon(Icons.lock)),
                 const SizedBox(height: 16),
-                input_field("Mot de passe", "Entrez votre mot de passe", true,
-                    const Icon(Icons.lock)),
-                
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Mot de passe oublié?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                input_field("Mot de passe", "Confirmée votre mot de passe",
+                    true, const Icon(Icons.lock)),
                 const SizedBox(
                   height: 24,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    
-                    
-                  },
+                  onPressed: () {},
                   child: const Text(
-                    "Connexion",
+                    "Creez",
                   ),
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

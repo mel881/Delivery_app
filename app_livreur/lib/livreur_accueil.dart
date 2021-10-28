@@ -24,12 +24,13 @@ class _AccueilState extends State<Accueil> {
               ),
             ),
             actions: <Widget>[
+              IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
               IconButton(
                 onPressed: () {
                   showSearch(context: context, delegate: Search(list));
                 },
                 icon: Icon(Icons.search),
-              )
+              ),
             ],
             bottom: const TabBar(
               tabs: <Widget>[
@@ -57,31 +58,42 @@ class _AccueilState extends State<Accueil> {
           drawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
-              children: const <Widget>[
+              children: <Widget>[
                 DrawerHeader(
                   decoration: BoxDecoration(
                     color: Colors.deepPurple,
                   ),
-                  child: Text(
-                    'John Doe',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Icon(
+                          Icons.account_circle,
+                          size: 80,
+                          color: Colors.white,
+                        ),
+                        Text("Compte Livreur",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ))
+                      ]),
                 ),
                 ListTile(
-                  leading: Icon(Icons.message),
-                  title: Text(''),
+                  leading: Icon(Icons.money),
+                  title: Text('Mes commisions'),
                 ),
-                ListTile(
-                  leading: Icon(Icons.account_circle),
-                  title: Text('Profile'),
-                ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.settings),
-                  title: Text('Settings'),
+                  title: Text('Paramétres'),
                 ),
+                const ListTile(
+                  leading: Icon(Icons.help),
+                  title: Text('Aide'),
+                ),
+                const ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('Deconnexion'),
+                )
               ],
             ),
           ),
@@ -104,7 +116,7 @@ Widget createListTabs() {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   "Choisir",
                   style: TextStyle(color: Colors.deepPurple),
                 ),
@@ -180,11 +192,11 @@ Widget createListTabs3() {
                 child: Text(
                   "Details",
                   style: TextStyle(
-                    color: Colors.yellow.shade800,
+                    color: Colors.yellow.shade700,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow.shade200,
+                    primary: Colors.yellow.shade100,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32))),
               ),

@@ -7,23 +7,25 @@ class Admin_app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
+        primarySwatch: Colors.deepPurple,
+      ),
       debugShowCheckedModeBanner: false,
       home: Login(),
-
     );
   }
 }
 
 class Home extends StatefulWidget {
-  
+  const Home({Key? key}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
-  final List<String> list = List.generate(10, (index) => "Livraison $index");
-  List <String> stat=["encours","postée","terminée","En attente","encours"];
-  List <bool> status=[false,true,false,true,false];
+
+final List<String> list = List.generate(10, (index) => "Livraison $index");
+List<String> stat = ["encours", "postée", "terminée", "En attente", "encours"];
+List<bool> status = [false, true, false, true, false];
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -39,14 +41,14 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
           ),
-           actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              showSearch(context: context, delegate: Search(list));
-            },
-            icon: Icon(Icons.search),
-          )
-        ],
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: Search(list));
+              },
+              icon: Icon(Icons.search),
+            )
+          ],
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(
@@ -67,72 +69,61 @@ class _HomeState extends State<Home> {
                   style: TextStyle(fontSize: 12),
                 ),
               ),
-              
             ],
           ),
         ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
-            children:<Widget>[
+            children: <Widget>[
               DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.deepPurple,
                 ),
-                child:Column(
-                  
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:[
-                    
-                    Icon(
-                    Icons.account_circle,size:80,color:Colors.white,
-                    ),
-                    Text(
-                      "Compte Admin",
-                      style:TextStyle(
-                        color:Colors.white,
-                        fontSize: 30,
-                      )
-                      
-                    )
-
-                  ]
-                ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Icon(
+                        Icons.account_circle,
+                        size: 80,
+                        color: Colors.white,
+                      ),
+                      Text("Compte Admin",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ))
+                    ]),
               ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('Messages'),
-              ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('Profile'),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                title: Text('Paramétres'),
               ),
+              const ListTile(
+                leading: Icon(Icons.help),
+                title: Text('Aide'),
+              ),
+              const ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Deconnexion'),
+              )
             ],
           ),
         ),
         body: TabBarView(
           children: <Widget>[
             Center(
-                child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home:statut(stat) ,
-            )),
-           
-            Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: livreur(status),
-              ),
+              child: statut(stat, context),
             ),
             Center(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: livreur(status),
-              ),
+              child: livreur(status, context),
+            ),
+            Center(
+              child: livreur(status, context),
             ),
           ],
         ),
@@ -141,91 +132,86 @@ class _HomeState extends State<Home> {
   }
 }
 
-
-
-
-
-  Widget livreur(List <bool> status) {
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: Icon(Icons.account_circle,
-              size:40,),
-
-              trailing: status[index]? OutlinedButton(
-                onPressed: () {
-                  print('Received click');
-                },
-                child:  Text("activé"),
-              )
-              : Wrap(
-                   spacing: 12, // space between two icons
-                children: <Widget>[
-                   Icon(
-                    Icons.edit,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                  OutlinedButton(
-                onPressed: () {
-                  
-                   
-                  
-                },
-                child:  Text("desactivé"),
-              )
-                ],
-              ),
-              
-              title: const Text('John Doe'),
-             // subtitle: Text('Created on 20 oct2021'),
-            );
-          }),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-         Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CreateAccount()),
-                    );
-                    
-        
-      },
-      child: const Icon(Icons.add),
-      backgroundColor: Colors.deepPurple,
-    ),
-    );
-  }
-// Livraison;
-Widget statut(List<String> stat){
+Widget livreur(List<bool> status, context) {
   return Scaffold(
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              trailing:  OutlinedButton(
-                onPressed: () {
-                  print('Received click');
-                },
-                child:  Text(stat[index]),
-              ),
-              title: Text('BIG Burgur'),
-              subtitle: Text('Created on 20 oct2021'),
-            );
-          }),
+    body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            leading: Icon(
+              Icons.account_circle,
+              size: 40,
+            ),
+
+            trailing: status[index]
+                ? OutlinedButton(
+                    onPressed: () {
+                      print('Received click');
+                    },
+                    child: Text("activé"),
+                  )
+                : Wrap(
+                    spacing: 12, // space between two icons
+                    children: <Widget>[
+                      Icon(
+                        Icons.edit,
+                        color: Colors.grey,
+                        size: 28,
+                      ),
+                      OutlinedButton(
+                        onPressed: () {},
+                        child: Text("desactivé"),
+                      )
+                    ],
+                  ),
+
+            title: const Text('John Doe'),
+            // subtitle: Text('Created on 20 oct2021'),
+          );
+        }),
     floatingActionButton: FloatingActionButton(
       onPressed: () {
         Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CreateAccount()),
-                    );
+          context,
+          MaterialPageRoute(builder: (context) => CreateAccount()),
+        );
         // Add your onPressed code here!
       },
       child: const Icon(Icons.add),
       backgroundColor: Colors.deepPurple,
     ),
-    );
+  );
+}
+
+// Livraison;
+Widget statut(List<String> stat, context) {
+  return Scaffold(
+    body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            trailing: OutlinedButton(
+              onPressed: () {
+                print('Received click');
+              },
+              child: Text(stat[index]),
+            ),
+            title: Text('BIG Burgur'),
+            subtitle: Text('Created on 20 oct2021'),
+          );
+        }),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CreateAccount()),
+        );
+        // Add your onPressed code here!
+      },
+      child: const Icon(Icons.add),
+      backgroundColor: Colors.deepPurple,
+    ),
+  );
 }
 
 // search bar;
@@ -287,7 +273,7 @@ class Search extends SearchDelegate {
             suggestionList[index],
           ),
           leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
-          onTap: (){
+          onTap: () {
             selectedResult = suggestionList[index];
             showResults(context);
           },
@@ -296,6 +282,3 @@ class Search extends SearchDelegate {
     );
   }
 }
-
-
-

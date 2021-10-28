@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
+import 'Livreur.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -136,7 +138,10 @@ class _RegisterState extends State<Register> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
                   },
                   child: const Text(
                     "Creez",
@@ -157,7 +162,12 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Login()),
+                        );
+                      },
                       child: const Text(
                         "Connectez-Vous!",
                         style: TextStyle(

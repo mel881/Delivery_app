@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'registers.dart';
+import 'Livreur.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -96,7 +98,12 @@ class _LoginState extends State<Login> {
                   height: 24,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
+                  },
                   child: const Text(
                     "Connexion",
                   ),
@@ -116,7 +123,12 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Register()),
+                        );
+                      },
                       child: const Text(
                         "Creer le!!",
                         style: TextStyle(
