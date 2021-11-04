@@ -14,6 +14,9 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     // of the TextField.
     final nameController = TextEditingController();
+    final phoneController = TextEditingController();
+    final adresseController = TextEditingController();
+    final passwordController = TextEditingController();
 
     @override
     void initState() {
@@ -23,6 +26,10 @@ class _ProfileState extends State<Profile> {
     @override
     void dispose() {
       nameController.dispose();
+      phoneController.dispose();
+      adresseController.dispose();
+      passwordController.dispose();
+
       super.dispose();
     }
 
@@ -36,8 +43,7 @@ class _ProfileState extends State<Profile> {
         padding: const EdgeInsets.all(12),
         child: Column(children: [
           Stack(children: [
-            buildImageProfile(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLUZMi9_GJHcCPe7UH0sF1_bhy-NUTTborXg&usqp=CA"),
+            buildImageProfile("images/avatar.png", 128, 128),
             Positioned(
               child: ClipOval(
                 child: Container(
@@ -62,8 +68,23 @@ class _ProfileState extends State<Profile> {
           Form(
               child: Column(
             children: [
-              buildPreFormInput(Icon(Icons.edit), "Nom", "John Doe", false,
-                  context, nameController)
+              buildPreFormInput(const Icon(Icons.edit), "Nom", "John Doe",
+                  false, context, nameController),
+              const SizedBox(height: 30),
+              buildPreFormInput(const Icon(Icons.edit), "Telephone",
+                  "699999999", false, context, phoneController),
+              const SizedBox(height: 30),
+              buildPreFormInput(const Icon(Icons.edit), "Adresse", "Yaoundé",
+                  false, context, adresseController),
+              const SizedBox(height: 30),
+              buildPreFormInput(const Icon(Icons.edit), "Mot de passe",
+                  "John_Doe", true, context, passwordController),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'Annuler');
+                  },
+                  child: const Text("Valider"))
             ],
           ))
         ]),
@@ -74,10 +95,10 @@ class _ProfileState extends State<Profile> {
 
 Widget buildPreFormInput(Icon subIcon, String label, String defaultValue,
     bool obscur, BuildContext context, TextEditingController controller) {
+  final _controller = TextEditingController(text: defaultValue);
   return TextFormField(
     obscureText: obscur,
-    //controller: controller,
-    initialValue: controller.text.isEmpty ? "" : controller.text,
+    controller: _controller,
     decoration: InputDecoration(
       label: Text(label),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -90,31 +111,17 @@ Widget buildPreFormInput(Icon subIcon, String label, String defaultValue,
   );
 }
 
-Widget input_field(String labelText, String hintText, bool obscur) {
-  return Container(
-    child: TextFormField(
-      obscureText: obscur,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-        labelText: labelText,
-        hintText: hintText,
-        //prefixIcon: icon,
-      ),
-    ),
-  );
-}
-
-Widget buildImageProfile(String pathImage) {
-  //final profile = AssetImage(pathImage);
-  final profile = NetworkImage(pathImage);
+Widget buildImageProfile(String pathImage, double height, double width) {
+  final profile = AssetImage(pathImage);
+  //final profile = NetworkImage(pathImage);
   return ClipOval(
     child: Material(
         color: Colors.transparent,
         child: Ink.image(
           image: profile,
           fit: BoxFit.cover,
-          height: 128,
-          width: 128,
+          height: height,
+          width: width,
           child: InkWell(onTap: () {}),
         )),
   );
@@ -141,7 +148,9 @@ Future<void> _displayTextInputDialog(
                 ),
               ),
               TextButton(
-                onPressed: () => Navigator.pop(context, 'Oui'),
+                onPressed: () {
+                  Navigator.pop(context, 'Oui');
+                },
                 child: const Text(
                   'Oui',
                   style: TextStyle(color: Colors.red),

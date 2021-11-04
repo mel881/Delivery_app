@@ -1,10 +1,13 @@
+import 'package:app_livreur/aide.dart';
 import 'package:app_livreur/choix_livraison.dart';
+import 'package:app_livreur/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'login_livreur.dart';
 import 'commissions.dart';
 import 'details_commissions.dart';
 import 'code_secret.dart';
+import 'profile.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({Key? key}) : super(key: key);
@@ -71,17 +74,26 @@ class _AccueilState extends State<Accueil> {
                   ),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Icon(
-                          Icons.account_circle,
-                          size: 80,
-                          color: Colors.white,
-                        ),
-                        Text("Compte Livreur",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                            ))
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile()),
+                              );
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                buildImageProfile("images/avatar.png", 90, 96),
+                                Text("John Doe",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 26,
+                                    ))
+                              ],
+                            )),
                       ]),
                 ),
                 ListTile(
@@ -92,7 +104,8 @@ class _AccueilState extends State<Accueil> {
                 ListTile(
                     leading: const Icon(Icons.help),
                     title: const Text('Aide'),
-                    onTap: () => print("ListTile")),
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Aide()))),
                 ListTile(
                     leading: const Icon(Icons.logout),
                     title: const Text('Deconnexion'),
