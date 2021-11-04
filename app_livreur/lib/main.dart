@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_livreur.dart';
+import 'Page/login_livreur.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
-        home: const Login());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      routes: {
+        '/': (context) => const Login(),
+      },
+    );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'choix_livraison.dart';
+
 class CodeSecret extends StatefulWidget {
   const CodeSecret({Key? key}) : super(key: key);
 
@@ -47,7 +49,6 @@ class _CodeSecretState extends State<CodeSecret> {
                       width: 20,
                     ),
                     TextFormField(
-                      maxLength: 5,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly
                       ],
@@ -56,11 +57,10 @@ class _CodeSecretState extends State<CodeSecret> {
                         if (value == null || value.isEmpty) {
                           return "Entrer le  code ";
                         }
-                        if (value.length <= 5) {
+                        if (value.length < 5 || value.length > 5) {
                           return "5 caractere sont attendue";
-                        } else {
-                          return null;
                         }
+                        return null;
                       },
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -76,7 +76,8 @@ class _CodeSecretState extends State<CodeSecret> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
+                            const SnackBar(
+                                content: Text('Traitement de la demande')),
                           );
                         }
                       },
@@ -93,25 +94,4 @@ class _CodeSecretState extends State<CodeSecret> {
       )),
     );
   }
-}
-
-Widget information(String label, String value) {
-  return RichText(
-    text: TextSpan(
-        style: const TextStyle(
-          fontSize: 18,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: label,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          const TextSpan(text: " : "),
-          TextSpan(text: value, style: TextStyle(color: Colors.grey[800]))
-        ]),
-  );
 }

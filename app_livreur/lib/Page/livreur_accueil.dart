@@ -1,13 +1,14 @@
-import 'package:app_livreur/aide.dart';
-import 'package:app_livreur/choix_livraison.dart';
-import 'package:app_livreur/profile.dart';
+import 'package:app_livreur/widget/buildwidget.dart';
+
+import 'aide.dart';
+import 'choix_livraison.dart';
+import 'profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'login_livreur.dart';
 import 'commissions.dart';
 import 'details_commissions.dart';
 import 'code_secret.dart';
-import 'profile.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({Key? key}) : super(key: key);
@@ -109,8 +110,9 @@ class _AccueilState extends State<Accueil> {
                 ListTile(
                     leading: const Icon(Icons.logout),
                     title: const Text('Deconnexion'),
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Login())))
+                    onTap: () {
+                      Navigator.pushNamed(context, '/');
+                    })
               ],
             ),
           ),
@@ -121,131 +123,6 @@ class _AccueilState extends State<Accueil> {
           ])),
     );
   }
-}
-
-Widget createListTabs() {
-  return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChoixLivrasion()));
-          },
-          trailing: Wrap(
-            spacing: 12, // space between two icons
-            children: <Widget>[Text("il y'as 2 min")],
-          ),
-          title: Text('BIG Burgur'),
-          subtitle: Text('Prix : 2500 Fcfa'),
-        );
-      });
-}
-
-Widget createListTabs2() {
-  return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          trailing: Wrap(
-            spacing: 12, // space between two icons
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                    title: const Text('Alert'),
-                    content: const Text(
-                        'Voulez vous  vraiment annuler cette livrasion ?'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Annuler'),
-                        child: const Text(
-                          'Annuler',
-                          style: TextStyle(color: Colors.green),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Oui'),
-                        child: const Text(
-                          'Oui',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                child: Text(
-                  "Annuler",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.red.shade700,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(10, 30),
-                    primary: Colors.red.shade200,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CodeSecret()));
-                },
-                child: Text(
-                  "Terminer",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.green.shade700,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(10, 30),
-                    primary: Colors.green.shade200,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
-            ],
-          ),
-          title: Text('BIG Burgur'),
-          subtitle: Text('Created on 20 oct 2021'),
-        );
-      });
-}
-
-Widget createListTabs3() {
-  return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          trailing: Wrap(
-            spacing: 12, // space between two icons
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailLivrasion()));
-                },
-                child: Text(
-                  "Details",
-                  style: TextStyle(
-                    color: Colors.yellow.shade700,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow.shade100,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
-            ],
-          ),
-          title: Text('BIG Burgur'),
-          subtitle: Text('Terminate on 20 oct2021'),
-        );
-      });
 }
 
 //search fonction
