@@ -1,4 +1,10 @@
+import 'package:app_livreur/choix_livraison.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'login_livreur.dart';
+import 'commissions.dart';
+import 'details_commissions.dart';
+import 'code_secret.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({Key? key}) : super(key: key);
@@ -29,7 +35,7 @@ class _AccueilState extends State<Accueil> {
                 onPressed: () {
                   showSearch(context: context, delegate: Search(list));
                 },
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
             ],
             bottom: const TabBar(
@@ -60,7 +66,7 @@ class _AccueilState extends State<Accueil> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 DrawerHeader(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.deepPurple,
                   ),
                   child: Column(
@@ -79,21 +85,19 @@ class _AccueilState extends State<Accueil> {
                       ]),
                 ),
                 ListTile(
-                  leading: Icon(Icons.money),
-                  title: Text('Mes commisions'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text('Paramétres'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.help),
-                  title: Text('Aide'),
-                ),
-                const ListTile(
-                  leading: Icon(Icons.logout),
-                  title: Text('Deconnexion'),
-                )
+                    leading: const Icon(Icons.money),
+                    title: const Text('Mes commisions'),
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Commission()))),
+                ListTile(
+                    leading: const Icon(Icons.help),
+                    title: const Text('Aide'),
+                    onTap: () => print("ListTile")),
+                ListTile(
+                    leading: const Icon(Icons.logout),
+                    title: const Text('Deconnexion'),
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login())))
               ],
             ),
           ),
@@ -111,24 +115,16 @@ Widget createListTabs() {
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChoixLivrasion()));
+          },
           trailing: Wrap(
             spacing: 12, // space between two icons
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text(
-                  "Choisir",
-                  style: TextStyle(color: Colors.deepPurple),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple.shade200,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
-            ],
+            children: <Widget>[Text("il y'as 2 min")],
           ),
           title: Text('BIG Burgur'),
-          subtitle: Text('Created on 20 oct2021'),
+          subtitle: Text('Prix : 2500 Fcfa'),
         );
       });
 }
@@ -142,7 +138,30 @@ Widget createListTabs2() {
             spacing: 12, // space between two icons
             children: <Widget>[
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Alert'),
+                    content: const Text(
+                        'Voulez vous  vraiment annuler cette livrasion ?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Annuler'),
+                        child: const Text(
+                          'Annuler',
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Oui'),
+                        child: const Text(
+                          'Oui',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 child: Text(
                   "Annuler",
                   style: TextStyle(
@@ -157,7 +176,10 @@ Widget createListTabs2() {
                         borderRadius: BorderRadius.circular(32))),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CodeSecret()));
+                },
                 child: Text(
                   "Terminer",
                   style: TextStyle(
@@ -188,7 +210,12 @@ Widget createListTabs3() {
             spacing: 12, // space between two icons
             children: <Widget>[
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailLivrasion()));
+                },
                 child: Text(
                   "Details",
                   style: TextStyle(
@@ -203,7 +230,7 @@ Widget createListTabs3() {
             ],
           ),
           title: Text('BIG Burgur'),
-          subtitle: Text('Created on 20 oct2021'),
+          subtitle: Text('Terminate on 20 oct2021'),
         );
       });
 }

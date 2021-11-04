@@ -1,4 +1,5 @@
 import 'package:app_livreur/Auth.dart';
+import 'package:app_livreur/profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,6 +17,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
         ),
-        home: const Auth());
+        home: const Profile());
   }
 }
