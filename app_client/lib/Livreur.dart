@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'registers.dart';
+import 'details.dart';
+import 'profile.dart';
+import 'profile_livreur.dart';
+import 'signature.dart';
+import 'package:mel_app/creer_livraison.dart';
+import 'aide.dart';
 
 class client_test extends StatelessWidget {
   @override
@@ -16,7 +22,7 @@ class client_test extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-  final List<String> list = List.generate(10, (index) => "Text $index");
+  final List<String> list = List.generate(10, (index) => "Livraison $index");
 
   @override
   _HomeState createState() => _HomeState();
@@ -85,34 +91,51 @@ class _HomeState extends State<Home> {
                 ),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Icon(
-                        Icons.account_circle,
-                        size: 80,
-                        color: Colors.white,
-                      ),
-                      Text("Compte Client",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                          ))
+                    children:  [
+                     TextButton(
+                            onPressed: () {
+                              Navigator.push<MaterialPageRoute>(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile()),
+                              );
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                buildImageProfile1("images/avatar.png", 90, 96),
+                                Text("John Doe",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 26,
+                                    ),),
+                              ],
+                            )),
                     ]),
               ),
-              const ListTile(
+             ListTile(
                 leading: Icon(Icons.account_circle),
-                title: Text('Profile'),
+                title: Text('Aide'),
+                
+             
               ),
-              const ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Paramétres'),
-              ),
-              const ListTile(
+            
+               ListTile(
                 leading: Icon(Icons.help),
                 title: Text('Aide'),
+                 onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => Aide()),
+                        ),
+
+               
               ),
-              const ListTile(
+               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Deconnexion'),
+                 onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                        ),
+                
               )
             ],
           ),
@@ -146,18 +169,57 @@ class ListViewBuilder extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
+               onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        ),
               trailing: Wrap(
                 spacing: 12, // space between two icons
                 children: <Widget>[
-                  Icon(
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push<MaterialPageRoute>(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile()),
+                      );
+                    },
+                     icon:  Icon(
                     Icons.edit,
                     color: Colors.grey,
                     size: 30,
                   ),
-                  Icon(
+
+                   ),
+                 IconButton(
+                                  onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Alert'),
+                    content: const Text(
+                        'Voulez vous  vraiment supprimer cette livraison ?' ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Annuler'),
+                        child: const Text(
+                          'Annuler',
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Oui'),
+                        child: const Text(
+                          'Oui',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 icon: Icon(
                     Icons.delete,
                     color: Colors.red,
                     size: 30,
+                  ),
                   ),
                 ],
               ),
@@ -166,7 +228,14 @@ class ListViewBuilder extends StatelessWidget {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push<MaterialPageRoute>(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  Create_delivery()),
+                        );
+
+         
+        },
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -184,6 +253,9 @@ class ListViewBuilder1 extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
+               onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        ),
               trailing: OutlinedButton(
                 onPressed: () {
                   print('Received click');
@@ -195,7 +267,12 @@ class ListViewBuilder1 extends StatelessWidget {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+            Navigator.push<MaterialPageRoute>(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  Create_delivery()),
+                        );
+        },
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -212,6 +289,9 @@ class ListViewBuilderEncours extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
+               onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        ),
               trailing: Wrap(
                 spacing: 12, // space between two icons
                 children: <Widget>[
@@ -220,11 +300,19 @@ class ListViewBuilderEncours extends StatelessWidget {
                     color: Colors.grey,
                     size: 30,
                   ),
-                  Icon(
+                 IconButton(
+                    onPressed: (){
+                               Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                                  );
+                    },
+                  icon: Icon(
                     Icons.account_circle,
                     color: Colors.grey,
                     size: 30,
                   ),
+                  ),
+                 
                 ],
               ),
               title: Text('BIG Burgur'),
@@ -232,7 +320,12 @@ class ListViewBuilderEncours extends StatelessWidget {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+            Navigator.push<MaterialPageRoute>(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  Create_delivery()),
+                        );
+        },
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),
@@ -249,13 +342,23 @@ class ListViewBuilderEnd extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
+               onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        ),
               trailing: Wrap(
                 spacing: 12, // space between two icons
                 children: <Widget>[
-                  Icon(
+                  IconButton(
+                    onPressed: (){
+                               Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                                  );
+                    },
+                  icon: Icon(
                     Icons.account_circle,
                     color: Colors.grey,
                     size: 30,
+                  ),
                   ),
                 ],
               ),
@@ -264,7 +367,12 @@ class ListViewBuilderEnd extends StatelessWidget {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+            Navigator.push<MaterialPageRoute>(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  Create_delivery()),
+                        );
+        },
         child: const Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
       ),

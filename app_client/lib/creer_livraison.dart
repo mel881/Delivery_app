@@ -8,8 +8,6 @@ class Create_delivery extends StatefulWidget {
   _Create_deliveryState createState() => _Create_deliveryState();
 }
 int _activeStepIndex = 0;
-final _formqey = GlobalKey<FormState>(); 
-final _formKey = GlobalKey<FormState>();
 
 
 class _Create_deliveryState extends State<Create_delivery> {

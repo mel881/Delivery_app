@@ -137,12 +137,13 @@ class _RegisterState extends State<Register> {
                   height: 24,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home()),
-                    );
-                  },
+                 onPressed: () {
+                        Navigator.push<MaterialPageRoute>(
+                          context,
+                          MaterialPageRoute(builder: (context) =>Home()),
+                        );
+                      },
+                  
                   child: const Text(
                     "Creez",
                   ),
@@ -163,7 +164,7 @@ class _RegisterState extends State<Register> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.push<MaterialPageRoute>(
                           context,
                           MaterialPageRoute(builder: (context) => Login()),
                         );
