@@ -1,3 +1,4 @@
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -79,6 +80,7 @@ class _CodeSecretState extends State<CodeSecret> {
                             const SnackBar(
                                 content: Text('Traitement de la demande')),
                           );
+                          Navigator.pop(context);
                         }
                       },
                       child: const Text(

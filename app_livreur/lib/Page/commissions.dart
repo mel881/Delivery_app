@@ -1,3 +1,4 @@
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'details_commissions.dart';
 
@@ -47,34 +48,4 @@ class _CommissionState extends State<Commission> {
           ),
         ));
   }
-}
-
-Widget createListLivraison() {
-  return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: 12,
-      padding: EdgeInsets.all(10),
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            elevation: 2,
-            child: ListTile(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DetailLivrasion())),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              contentPadding: const EdgeInsets.only(
-                  left: 10, right: 5, top: 15, bottom: 15),
-              title: const Text("Big Burger"),
-              trailing: Wrap(
-                direction: Axis.vertical,
-                children: const <Widget>[
-                  Text('Prix:1000Fcfa'),
-                  Text("votre commission: 500Fcfa")
-                ],
-              ),
-            ));
-      });
 }

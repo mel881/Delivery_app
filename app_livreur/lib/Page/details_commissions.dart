@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:app_livreur/widget/buildwidget.dart';
 
 class DetailLivrasion extends StatefulWidget {
   const DetailLivrasion({Key? key}) : super(key: key);
@@ -69,25 +70,4 @@ class _DetailLivrasionState extends State<DetailLivrasion> {
       ),
     );
   }
-}
-
-Widget information(String label, String value) {
-  return RichText(
-    text: TextSpan(
-        style: const TextStyle(
-          fontSize: 18,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: label,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          const TextSpan(text: " : "),
-          TextSpan(text: value, style: TextStyle(color: Colors.grey[800]))
-        ]),
-  );
 }

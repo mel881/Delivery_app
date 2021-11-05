@@ -4,26 +4,33 @@ import 'package:app_livreur/Page/details_commissions.dart';
 import 'package:flutter/material.dart';
 
 Widget createListTabs() {
-  /*Ce wi */
+  /*Ce widget permet de creer  un liste de livrason posté.
+  avec les données on passe juste en paramtre la variables constant  les livraisons
+   */
   return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
+      itemCount: 5, // donné.lenght
+      itemBuilder: (BuildContext context,
+          int index) /* index nous permet d'itterer sur les differentes valeur de notre variable */ {
         return ListTile(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChoixLivrasion()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ChoixLivrasion()));
           },
           trailing: Wrap(
-            spacing: 12, // space between two icons
-            children: <Widget>[Text("il y'as 2 min")],
+            children: <Widget>[const Text("il y'as 2 min")],
           ),
-          title: Text('BIG Burgur'),
-          subtitle: Text('Prix : 2500 Fcfa'),
+          title: const Text('BIG Burgur'), // donné[index].nom
+          subtitle: const Text('Prix : 2500 Fcfa'), //donné[index].prix
         );
       });
 }
 
 Widget createListTabs2() {
+  /*Ce widget permet de creer  un liste de livrason encours.
+  avec les données on passe juste en paramtre la variables constant  les livraisons
+   */
   return ListView.builder(
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
@@ -32,6 +39,7 @@ Widget createListTabs2() {
             spacing: 12, // space between two icons
             children: <Widget>[
               ElevatedButton(
+                // ouverture de la fenetre popup
                 onPressed: () => showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
@@ -89,13 +97,17 @@ Widget createListTabs2() {
               ),
             ],
           ),
-          title: Text('BIG Burgur'),
-          subtitle: Text('Created on 20 oct 2021'),
+          title: const Text('BIG Burgur'), //data[index].nom
+          subtitle:
+              const Text('Created on 20 oct 2021'), //data[index].created_on
         );
       });
 }
 
 Widget createListTabs3() {
+  /*Ce widget permet de creer  un liste de livrason terminées.
+  avec les données on passe juste en paramtre la variables constant  les livraisons
+   */
   return ListView.builder(
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
@@ -108,7 +120,7 @@ Widget createListTabs3() {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DetailLivrasion()));
+                          builder: (context) => const DetailLivrasion()));
                 },
                 child: Text(
                   "Details",
@@ -130,6 +142,10 @@ Widget createListTabs3() {
 }
 
 Widget information(String label, String value) {
+  /* ce widget me permet de creer des text  du type
+  "label : value"
+
+   */
   return RichText(
     text: TextSpan(
         style: const TextStyle(
@@ -147,5 +163,82 @@ Widget information(String label, String value) {
           const TextSpan(text: " : "),
           TextSpan(text: value, style: TextStyle(color: Colors.grey[800]))
         ]),
+  );
+}
+
+Widget input_field(String labelText, String hintText, bool obscur, Icon icon,
+    TextEditingController controller) {
+  return Container(
+    child: TextFormField(
+      controller: controller,
+      obscureText: obscur,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
+        labelText: labelText,
+        hintText: hintText,
+        prefixIcon: icon,
+      ),
+    ),
+  );
+}
+
+Widget createListLivraison() {
+  /* cette fonction  permet  de creer une liste de livrasion  terminées */
+  return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 12,
+      padding: EdgeInsets.all(10),
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 2,
+            child: ListTile(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DetailLivrasion())),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              contentPadding: const EdgeInsets.only(
+                  left: 10, right: 5, top: 15, bottom: 15),
+              title: const Text("Big Burger"),
+              trailing: Wrap(
+                direction: Axis.vertical,
+                children: const <Widget>[
+                  Text('Prix:1000Fcfa'),
+                  Text("votre commission: 500Fcfa")
+                ],
+              ),
+            ));
+      });
+}
+
+Widget BuildExpansionTileText(Icon icon, String titre, String contenue) {
+  /* ce widget me permet de creer  des expansiontile avec des icons  de mon choix  */
+  return ExpansionTile(leading: icon, title: Text(titre), children: [
+    const SizedBox(
+      height: 10,
+    ),
+    Text(contenue),
+    const SizedBox(
+      height: 30,
+    ),
+  ]);
+}
+
+Widget buildImageProfile(String pathImage, double height, double width) {
+  /* Permet de creer une image ronde avec la hauteur et la larger qu'on veut */
+  final profile = AssetImage(pathImage);
+  //final profile = NetworkImage(pathImage);
+  return ClipOval(
+    child: Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: profile,
+          fit: BoxFit.cover,
+          height: height,
+          width: width,
+          child: InkWell(onTap: () {}),
+        )),
   );
 }

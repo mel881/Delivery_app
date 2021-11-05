@@ -1,5 +1,4 @@
 import 'package:app_livreur/widget/buildwidget.dart';
-
 import 'aide.dart';
 import 'choix_livraison.dart';
 import 'profile.dart';
@@ -111,7 +110,7 @@ class _AccueilState extends State<Accueil> {
                     leading: const Icon(Icons.logout),
                     title: const Text('Deconnexion'),
                     onTap: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.popUntil(context, ModalRoute.withName('/'));
                     })
               ],
             ),

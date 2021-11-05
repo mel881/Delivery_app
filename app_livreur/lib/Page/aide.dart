@@ -1,3 +1,4 @@
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 
 class Aide extends StatefulWidget {
@@ -16,10 +17,10 @@ class _AideState extends State<Aide> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Center(
             child: Column(children: [
-              Text(
+              const Text(
                 " Besion d'aide pour utiliser notre application ?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -46,7 +47,7 @@ class _AideState extends State<Aide> {
                   const Icon(Icons.delete),
                   "Supprimer une Livraison",
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               const ExpansionTile(
@@ -68,16 +69,4 @@ class _AideState extends State<Aide> {
       ),
     );
   }
-}
-
-Widget BuildExpansionTileText(Icon icon, String titre, String contenue) {
-  return ExpansionTile(leading: icon, title: Text(titre), children: [
-    const SizedBox(
-      height: 10,
-    ),
-    Text(contenue),
-    const SizedBox(
-      height: 30,
-    ),
-  ]);
 }

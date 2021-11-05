@@ -1,3 +1,4 @@
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -72,25 +73,4 @@ class _ChoixLivrasionState extends State<ChoixLivrasion> {
       ),
     );
   }
-}
-
-Widget information(String label, String value) {
-  return RichText(
-    text: TextSpan(
-        style: const TextStyle(
-          fontSize: 18,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: label,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          const TextSpan(text: " : "),
-          TextSpan(text: value, style: TextStyle(color: Colors.grey[800]))
-        ]),
-  );
 }

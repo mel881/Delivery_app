@@ -1,3 +1,4 @@
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'livreur_accueil.dart';
 
@@ -11,6 +12,23 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    final _nameController = TextEditingController();
+
+    final _passwordController = TextEditingController();
+
+    @override
+    void initState() {
+      super.initState();
+    }
+
+    @override
+    void dispose() {
+      _nameController.dispose();
+      _passwordController.dispose();
+
+      super.dispose();
+    }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(180),
@@ -48,10 +66,10 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 16),
                 input_field("Nom  d'utilisateur", "Entrez votre nom ", false,
-                    const Icon(Icons.account_circle)),
+                    const Icon(Icons.account_circle), _nameController),
                 const SizedBox(height: 16),
                 input_field("Mot de passe", "Entrez votre mot de passe", true,
-                    const Icon(Icons.lock)),
+                    const Icon(Icons.lock), _passwordController),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -75,7 +93,7 @@ class _LoginState extends State<Login> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Accueil()),
+                      MaterialPageRoute(builder: (context) => const Accueil()),
                     );
                   },
                   child: const Text(
@@ -95,16 +113,3 @@ class _LoginState extends State<Login> {
 }
 
 // fonction pour generer les inputs
-Widget input_field(String labelText, String hintText, bool obscur, Icon icon) {
-  return Container(
-    child: TextFormField(
-      obscureText: obscur,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-        labelText: labelText,
-        hintText: hintText,
-        prefixIcon: icon,
-      ),
-    ),
-  );
-}

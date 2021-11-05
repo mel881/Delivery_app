@@ -1,4 +1,5 @@
 import 'package:app_livreur/Page/login_livreur.dart';
+import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -12,9 +13,10 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    // of the TextField.
+    // contreoller des TextFormField.
     final nameController = TextEditingController();
     final phoneController = TextEditingController();
+    final mailController = TextEditingController();
     final adresseController = TextEditingController();
     final passwordController = TextEditingController();
 
@@ -27,6 +29,7 @@ class _ProfileState extends State<Profile> {
     void dispose() {
       nameController.dispose();
       phoneController.dispose();
+      mailController.dispose();
       adresseController.dispose();
       passwordController.dispose();
 
@@ -35,7 +38,7 @@ class _ProfileState extends State<Profile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mon Profil"),
+        title: const Text("Mon Profil"),
       ),
       body: SingleChildScrollView(
           child: Center(
@@ -58,7 +61,7 @@ class _ProfileState extends State<Profile> {
                       ),
                       borderRadius: BorderRadius.circular(100),
                     ),
-                    child: Icon(Icons.add_a_photo, color: Colors.white)),
+                    child: const Icon(Icons.add_a_photo, color: Colors.white)),
               ),
               bottom: 0,
               right: 5,
@@ -68,17 +71,44 @@ class _ProfileState extends State<Profile> {
           Form(
               child: Column(
             children: [
-              buildPreFormInput(const Icon(Icons.edit), "Nom", "John Doe",
-                  false, context, nameController),
+              buildPreFormInput(
+                  const Icon(Icons.edit),
+                  "Nom",
+                  "John Doe",
+                  false,
+                  context,
+                  nameController,
+                  "Entrer  le nom d'utilisateur"),
               const SizedBox(height: 30),
-              buildPreFormInput(const Icon(Icons.edit), "Telephone",
-                  "699999999", false, context, phoneController),
+              buildPreFormInput(
+                  const Icon(Icons.edit),
+                  "Telephone",
+                  "699999999",
+                  false,
+                  context,
+                  phoneController,
+                  "Entrer votre numero  de telephone"),
+              const SizedBox(height: 30),
+              buildPreFormInput(
+                  const Icon(Icons.edit),
+                  "Email",
+                  "johnDoe@gmail.com",
+                  false,
+                  context,
+                  mailController,
+                  "Entrer votre adreesse mail"),
               const SizedBox(height: 30),
               buildPreFormInput(const Icon(Icons.edit), "Adresse", "Yaoundé",
-                  false, context, adresseController),
+                  false, context, adresseController, "Entrer votre adreesse"),
               const SizedBox(height: 30),
-              buildPreFormInput(const Icon(Icons.edit), "Mot de passe",
-                  "John_Doe", true, context, passwordController),
+              buildPreFormInput(
+                  const Icon(Icons.edit),
+                  "Mot de passe",
+                  "John_Doe",
+                  true,
+                  context,
+                  passwordController,
+                  "Enter votre mot de passe "),
               const SizedBox(height: 30),
               ElevatedButton(
                   onPressed: () {
@@ -93,50 +123,41 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget buildPreFormInput(Icon subIcon, String label, String defaultValue,
-    bool obscur, BuildContext context, TextEditingController controller) {
+Widget buildPreFormInput(
+    Icon subIcon,
+    String label,
+    String defaultValue,
+    bool obscur,
+    BuildContext context,
+    TextEditingController controller,
+    String hinttext) {
   final _controller = TextEditingController(text: defaultValue);
   return TextFormField(
     obscureText: obscur,
     controller: _controller,
     decoration: InputDecoration(
-      label: Text(label),
+      labelText: label,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       suffixIcon: IconButton(
           onPressed: () {
-            _displayTextInputDialog(context, controller);
+            _displayTextInputDialog(context, controller, label, hinttext);
           },
           icon: subIcon),
     ),
   );
 }
 
-Widget buildImageProfile(String pathImage, double height, double width) {
-  final profile = AssetImage(pathImage);
-  //final profile = NetworkImage(pathImage);
-  return ClipOval(
-    child: Material(
-        color: Colors.transparent,
-        child: Ink.image(
-          image: profile,
-          fit: BoxFit.cover,
-          height: height,
-          width: width,
-          child: InkWell(onTap: () {}),
-        )),
-  );
-}
-
-Future<void> _displayTextInputDialog(
-    BuildContext context, TextEditingController controller) async {
+Future<void> _displayTextInputDialog(BuildContext context,
+    TextEditingController controller, String name, String hinttext) async {
   return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
+            title: Text(name),
             content: TextFormField(
                 controller: controller,
                 decoration: InputDecoration(
-                    label: Text("Nom"),
-                    hintText: "Entrer le nouvelle nom  d'utilisateur",
+                    labelText: name,
+                    hintText: hinttext,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)))),
             actions: <Widget>[
