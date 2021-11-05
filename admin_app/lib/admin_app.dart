@@ -9,17 +9,19 @@ import 'aide.dart';
 import 'compte_livreur.dart';
 import 'fixer_prix.dart';
 
-
 class Admin_app extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Login(),
-    );
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+        ),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => Login(),
+        }
+        //home: Login(),
+        );
   }
 }
 
@@ -31,9 +33,33 @@ class Home extends StatefulWidget {
 }
 
 final List<String> list = List.generate(10, (index) => "Livraison $index");
-List<String> stat = ["encours", "postée", "terminée", "En attente","fixer le prix",
-"encours", "postée", "terminée", "En attente","fixer le prix"];
-List<bool> status = [false, true, false, true, false];
+List<String> stat = [
+  "encours",
+  "postée",
+  "terminée",
+  "En attente",
+  "fixer le prix",
+  "encours",
+  "postée",
+  "terminée",
+  "En attente",
+  "fixer le prix"
+];
+List<bool> status = [
+  false,
+  true,
+  false,
+  true,
+  false,
+  false,
+  true,
+  false,
+  true,
+  false,
+  false,
+  true,
+  false
+];
 
 class _HomeState extends State<Home> {
   @override
@@ -89,55 +115,52 @@ class _HomeState extends State<Home> {
                 decoration: const BoxDecoration(
                   color: Colors.deepPurple,
                 ),
-                 child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Profile()),
-                              );
-                            },
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                buildImageProfile1("images/avatar.png", 90, 96),
-                                Text("John Doe",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                    ))
-                              ],
-                            )),
-                      ]),
-                            
-               
-               
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Profile()),
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              buildImageProfile1("images/avatar.png", 90, 96),
+                              Text("John Doe",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                  ))
+                            ],
+                          )),
+                    ]),
               ),
-               ListTile(
+              ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('Creer Un Compte Admin'),
-                onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CreateAccount()),
-                        ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateAccount()),
+                ),
               ),
-              
-               ListTile(
+              ListTile(
                 leading: Icon(Icons.help),
                 title: Text('Aide'),
-                onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Aide()),
-                        ),
-
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Aide()),
+                ),
               ),
-               ListTile(
+              ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Deconnexion'),
-                onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Login()),
-                        ),
+                onTap: () {
+                  Navigator.popUntil(context, ModalRoute.withName('/'));
+                },
               )
             ],
           ),
@@ -159,17 +182,19 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
 // fonction pour les comptes livreur et admin
 Widget compte(List<bool> status, context) {
   return Scaffold(
     body: ListView.builder(
-        itemCount: 5,
+        itemCount: status.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             onTap: () {
-            Navigator.push(context,
+              Navigator.push(
+                context,
                 MaterialPageRoute(builder: (context) => Profile()),
-                );
+              );
             },
             leading: Icon(
               Icons.account_circle,
@@ -178,62 +203,67 @@ Widget compte(List<bool> status, context) {
 
             trailing: status[index]
                 ? OutlinedButton(
-                
-                  onPressed: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                    title: const Text('Alert'),
-                    content: const Text(
-                        'Voulez vous  vraiment reactiver ce compte ?'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Annuler'),
-                        child: const Text(
-                          'Annuler',
-                          style: TextStyle(color: Colors.green),
-                        ),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32))),
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Alert'),
+                        content: const Text(
+                            'Voulez vous  vraiment reactiver ce compte ?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Annuler'),
+                            child: const Text(
+                              'Annuler',
+                              style: TextStyle(color: Colors.green),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Oui'),
+                            child: const Text(
+                              'Oui',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Oui'),
-                        child: const Text(
-                          'Oui',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
                     child: Text("activé"),
                   )
                 : Wrap(
                     spacing: 12, // space between two icons
                     children: <Widget>[
-              
-                    ElevatedButton(
+                      OutlinedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(32))),
                         onPressed: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                    title: const Text('Alert'),
-                    content: const Text(
-                        'Voulez vous  vraiment desactiver ce compte ?'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Annuler'),
-                        child: const Text(
-                          'Annuler',
-                          style: TextStyle(color: Colors.green),
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Alert'),
+                            content: const Text(
+                                'Voulez vous  vraiment desactiver ce compte ?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Annuler'),
+                                child: const Text(
+                                  'Annuler',
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'Oui'),
+                                child: const Text(
+                                  'Oui',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Oui'),
-                        child: const Text(
-                          'Oui',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                         child: Text("desactivé"),
                       )
                     ],
@@ -260,53 +290,54 @@ Widget compte(List<bool> status, context) {
 // Livraison;
 Widget livraison(List<String> stat, context) {
   return Scaffold(
-    body: ListView.builder( 
-         
-        itemCount:stat.length,
-        itemBuilder: (BuildContext context, int index){
-        if (stat[index]=="fixer le prix")
-         {
-          return ListTile(
-            onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => FixerPrix()),
+    body: ListView.builder(
+        itemCount: stat.length,
+        itemBuilder: (BuildContext context, int index) {
+          if (stat[index] == "fixer le prix") {
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FixerPrix()),
                 );
-            },
-            trailing: OutlinedButton(
-              onPressed: () {
-                print('Received click');
               },
-              child: Text(stat[index]),
-            ),
-            title: Text('BIG Burgur'),
-            subtitle: Text('Created on 20 oct2021'),
-          );
-        }
-        else{
-          return ListTile(
-            onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DetailLivrasion()),
+              trailing: OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FixerPrix()),
+                  );
+                  print('Received click');
+                },
+                child: Text(stat[index]),
+              ),
+              title: Text('BIG Burgur'),
+              subtitle: Text('Created on 20 oct2021'),
+            );
+          } else {
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailLivrasion()),
                 );
-            },
-            trailing: OutlinedButton(
-              onPressed: () {
-                print('Received click');
               },
-              child: Text(stat[index]),
-            ),
-            title: Text('BIG Burgur'),
-            subtitle: Text('Created on 20 oct2021'),
-          );
-
-        }
-        }
-        ),
+              trailing: OutlinedButton(
+                onPressed: () {
+                  print('Received click');
+                },
+                child: Text(stat[index]),
+              ),
+              title: Text('BIG Burgur'),
+              subtitle: Text('Created on 20 oct2021'),
+            );
+          }
+        }),
     floatingActionButton: FloatingActionButton(
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Create_delivery ()),
+          MaterialPageRoute(builder: (context) => Create_delivery()),
         );
         // Add your onPressed code here!
       },

@@ -60,9 +60,13 @@ class _ChoixLivrasionState extends State<ChoixLivrasion> {
                     information("Ville ", "10 Kg"),
                     information("Lieu de Depart", "Accasia"),
                     information("Lieu d'arrivé", "Minboman"),
+                    information("Status", "Postée"),
                     Center(
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Choisir")),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Choisir")),
                     )
                   ],
                 ),

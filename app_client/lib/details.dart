@@ -1,13 +1,18 @@
-
 import 'package:flutter/material.dart';
 
+import 'package:flutter/cupertino.dart';
 
+class DetailLivrasion extends StatefulWidget {
+  const DetailLivrasion({Key? key}) : super(key: key);
 
+  @override
+  _DetailLivrasionState createState() => _DetailLivrasionState();
+}
 
-
-
-
-Scaffold(
+class _DetailLivrasionState extends State<DetailLivrasion> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         title: Column(
           children: [Text("Details")],

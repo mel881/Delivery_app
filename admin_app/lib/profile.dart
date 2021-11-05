@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -15,6 +14,7 @@ class _ProfileState extends State<Profile> {
     // of the TextField.
     final nameController = TextEditingController();
     final phoneController = TextEditingController();
+    final mailController = TextEditingController();
     final adresseController = TextEditingController();
     final passwordController = TextEditingController();
 
@@ -27,6 +27,7 @@ class _ProfileState extends State<Profile> {
     void dispose() {
       nameController.dispose();
       phoneController.dispose();
+      mailController.dispose();
       adresseController.dispose();
       passwordController.dispose();
 
@@ -46,7 +47,7 @@ class _ProfileState extends State<Profile> {
             buildImageProfile1("images/avatar.png", 128, 128),
             Positioned(
               child: ClipOval(
-                child: Container( 
+                child: Container(
                     padding: const EdgeInsets.all(5),
                     height: 42,
                     width: 42,
@@ -73,6 +74,9 @@ class _ProfileState extends State<Profile> {
               const SizedBox(height: 30),
               buildPreFormInput(const Icon(Icons.edit), "Telephone",
                   "699999999", false, context, phoneController),
+              const SizedBox(height: 30),
+              buildPreFormInput(const Icon(Icons.edit), "Email",
+                  "johnDo@gmail.com", false, context, mailController),
               const SizedBox(height: 30),
               buildPreFormInput(const Icon(Icons.edit), "Adresse", "Yaoundé",
                   false, context, adresseController),
@@ -102,11 +106,7 @@ Widget buildPreFormInput(Icon subIcon, String label, String defaultValue,
     decoration: InputDecoration(
       label: Text(label),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-      suffixIcon: IconButton(
-          onPressed: () {
-           
-          },
-          icon: subIcon),
+      suffixIcon: IconButton(onPressed: () {}, icon: subIcon),
     ),
   );
 }

@@ -136,14 +136,9 @@ Widget buildPreFormInput(
     obscureText: obscur,
     controller: _controller,
     decoration: InputDecoration(
-      labelText: label,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-      suffixIcon: IconButton(
-          onPressed: () {
-            _displayTextInputDialog(context, controller, label, hinttext);
-          },
-          icon: subIcon),
-    ),
+        labelText: label,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        suffixIcon: IconButton(onPressed: () {}, icon: subIcon)),
   );
 }
 

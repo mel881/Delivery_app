@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'create_livraison.dart';
 import 'admin_app.dart';
+
 class FixerPrix extends StatefulWidget {
-  const FixerPrix({ Key? key }) : super(key: key);
+  const FixerPrix({Key? key}) : super(key: key);
 
   @override
   _FixerPrixState createState() => _FixerPrixState();
 }
 
 class _FixerPrixState extends State<FixerPrix> {
-  TextEditingController prixControl= TextEditingController();
+  TextEditingController prixControl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +53,6 @@ class _FixerPrixState extends State<FixerPrix> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     information("Nom", "Big Burger"),
-                    information("Coût", "1000 Fcfa"),
                     information("Despcrition",
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a neque facilisis felis tempus pretium. Pellentesque nec nulla vestibulum, consequat ligula ac, ultrices odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque eget lectus at dolor vehicula tincidunt."),
                     information("Poids ", "1,5Kg"),
@@ -61,26 +61,25 @@ class _FixerPrixState extends State<FixerPrix> {
                     information("Ville ", "10 Kg"),
                     information("Lieu de Depart", "Accasia"),
                     information("Lieu d'arrivé", "Minboman"),
-                    information("Livreur", "John Doe"),
+                    information("Livreur", ""),
                     SizedBox(height: 30),
-                   textFiel("Fixer le prix","Entrer le cout de la livraison",false,prixControl,false),
-                   ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home()),
-                    );
-                  },
-                  child:  Text(
-                    "Valider",
-                    textAlign: TextAlign.center,
-                    
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      alignment: Alignment.bottomLeft,  
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32))),
-                ),
+                    textFiel("Entrer le cout de la livraison", "Fixer le prix",
+                        false, prixControl, false),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                        );
+                      },
+                      child: Text(
+                        "Valider",
+                        textAlign: TextAlign.center,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32))),
+                    ),
                   ],
                 ),
               ),

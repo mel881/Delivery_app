@@ -23,7 +23,6 @@ class _CreateAccountState extends State<CreateAccount> {
             ),
           ),
         ),
-       
       ),
       body: Center(
         child: SingleChildScrollView(
