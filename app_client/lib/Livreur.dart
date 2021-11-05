@@ -7,6 +7,7 @@ import 'profile_livreur.dart';
 import 'signature.dart';
 import 'package:mel_app/creer_livraison.dart';
 import 'aide.dart';
+import'about.dart';
 
 class client_test extends StatelessWidget {
   @override
@@ -113,13 +114,7 @@ class _HomeState extends State<Home> {
                             )),
                     ]),
               ),
-             ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Aide'),
-                
              
-              ),
-            
                ListTile(
                 leading: Icon(Icons.help),
                 title: Text('Aide'),
@@ -129,6 +124,15 @@ class _HomeState extends State<Home> {
 
                
               ),
+              ListTile(
+                leading: Icon(Icons.info_outline),
+                title: Text('A propos'),
+                 onTap: () => Navigator.push<MaterialPageRoute> (context,
+                        MaterialPageRoute(builder: (context) => Apropos()),
+                        ),
+             
+              ),
+            
                ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Deconnexion'),
@@ -180,7 +184,7 @@ class ListViewBuilder extends StatelessWidget {
                       Navigator.push<MaterialPageRoute>(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Profile()),
+                                    builder: (context) => Create_delivery()),
                       );
                     },
                      icon:  Icon(
@@ -303,7 +307,7 @@ class ListViewBuilderEncours extends StatelessWidget {
                  IconButton(
                     onPressed: (){
                                Navigator.push<MaterialPageRoute> (context,
-                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        MaterialPageRoute(builder: (context) => ProfilLivreur()),
                                   );
                     },
                   icon: Icon(
@@ -351,7 +355,7 @@ class ListViewBuilderEnd extends StatelessWidget {
                   IconButton(
                     onPressed: (){
                                Navigator.push<MaterialPageRoute> (context,
-                        MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                        MaterialPageRoute(builder: (context) => ProfilLivreur()),
                                   );
                     },
                   icon: Icon(
