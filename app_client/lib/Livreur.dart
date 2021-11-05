@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'registers.dart';
 
 class client_test extends StatelessWidget {
   @override

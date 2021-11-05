@@ -1,6 +1,14 @@
+import 'package:admin_app/profil_admin.dart';
 import 'package:flutter/material.dart';
 import 'create_account.dart';
 import 'login_admin.dart';
+import 'create_livraison.dart';
+import 'profile.dart';
+import 'details.dart';
+import 'aide.dart';
+import 'compte_livreur.dart';
+import 'fixer_prix.dart';
+
 
 class Admin_app extends StatelessWidget {
   @override
@@ -23,7 +31,8 @@ class Home extends StatefulWidget {
 }
 
 final List<String> list = List.generate(10, (index) => "Livraison $index");
-List<String> stat = ["encours", "postée", "terminée", "En attente", "encours"];
+List<String> stat = ["encours", "postée", "terminée", "En attente","fixer le prix",
+"encours", "postée", "terminée", "En attente","fixer le prix"];
 List<bool> status = [false, true, false, true, false];
 
 class _HomeState extends State<Home> {
@@ -80,36 +89,55 @@ class _HomeState extends State<Home> {
                 decoration: const BoxDecoration(
                   color: Colors.deepPurple,
                 ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Icon(
-                        Icons.account_circle,
-                        size: 80,
-                        color: Colors.white,
-                      ),
-                      Text("Compte Admin",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                          ))
-                    ]),
+                 child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile()),
+                              );
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                buildImageProfile1("images/avatar.png", 90, 96),
+                                Text("John Doe",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 26,
+                                    ))
+                              ],
+                            )),
+                      ]),
+                            
+               
+               
               ),
-              const ListTile(
+               ListTile(
                 leading: Icon(Icons.account_circle),
-                title: Text('Profile'),
+                title: Text('Creer Un Compte Admin'),
+                onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CreateAccount()),
+                        ),
               ),
-              const ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Paramétres'),
-              ),
-              const ListTile(
+              
+               ListTile(
                 leading: Icon(Icons.help),
                 title: Text('Aide'),
+                onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Aide()),
+                        ),
+
               ),
-              const ListTile(
+               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Deconnexion'),
+                onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                        ),
               )
             ],
           ),
@@ -117,13 +145,13 @@ class _HomeState extends State<Home> {
         body: TabBarView(
           children: <Widget>[
             Center(
-              child: statut(stat, context),
+              child: livraison(stat, context),
             ),
             Center(
-              child: livreur(status, context),
+              child: compte(status, context),
             ),
             Center(
-              child: livreur(status, context),
+              child: compte(status, context),
             ),
           ],
         ),
@@ -131,13 +159,18 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-Widget livreur(List<bool> status, context) {
+// fonction pour les comptes livreur et admin
+Widget compte(List<bool> status, context) {
   return Scaffold(
     body: ListView.builder(
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
+            onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Profile()),
+                );
+            },
             leading: Icon(
               Icons.account_circle,
               size: 40,
@@ -145,21 +178,62 @@ Widget livreur(List<bool> status, context) {
 
             trailing: status[index]
                 ? OutlinedButton(
-                    onPressed: () {
-                      print('Received click');
-                    },
+                
+                  onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Alert'),
+                    content: const Text(
+                        'Voulez vous  vraiment reactiver ce compte ?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Annuler'),
+                        child: const Text(
+                          'Annuler',
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Oui'),
+                        child: const Text(
+                          'Oui',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                     child: Text("activé"),
                   )
                 : Wrap(
                     spacing: 12, // space between two icons
                     children: <Widget>[
-                      Icon(
-                        Icons.edit,
-                        color: Colors.grey,
-                        size: 28,
+              
+                    ElevatedButton(
+                        onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Alert'),
+                    content: const Text(
+                        'Voulez vous  vraiment desactiver ce compte ?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Annuler'),
+                        child: const Text(
+                          'Annuler',
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ),
-                      OutlinedButton(
-                        onPressed: () {},
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Oui'),
+                        child: const Text(
+                          'Oui',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                         child: Text("desactivé"),
                       )
                     ],
@@ -173,7 +247,7 @@ Widget livreur(List<bool> status, context) {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CreateAccount()),
+          MaterialPageRoute(builder: (context) => CompteLivreur()),
         );
         // Add your onPressed code here!
       },
@@ -184,12 +258,20 @@ Widget livreur(List<bool> status, context) {
 }
 
 // Livraison;
-Widget statut(List<String> stat, context) {
+Widget livraison(List<String> stat, context) {
   return Scaffold(
-    body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
+    body: ListView.builder( 
+         
+        itemCount:stat.length,
+        itemBuilder: (BuildContext context, int index){
+        if (stat[index]=="fixer le prix")
+         {
           return ListTile(
+            onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => FixerPrix()),
+                );
+            },
             trailing: OutlinedButton(
               onPressed: () {
                 print('Received click');
@@ -199,12 +281,32 @@ Widget statut(List<String> stat, context) {
             title: Text('BIG Burgur'),
             subtitle: Text('Created on 20 oct2021'),
           );
-        }),
+        }
+        else{
+          return ListTile(
+            onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                );
+            },
+            trailing: OutlinedButton(
+              onPressed: () {
+                print('Received click');
+              },
+              child: Text(stat[index]),
+            ),
+            title: Text('BIG Burgur'),
+            subtitle: Text('Created on 20 oct2021'),
+          );
+
+        }
+        }
+        ),
     floatingActionButton: FloatingActionButton(
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CreateAccount()),
+          MaterialPageRoute(builder: (context) => Create_delivery ()),
         );
         // Add your onPressed code here!
       },
