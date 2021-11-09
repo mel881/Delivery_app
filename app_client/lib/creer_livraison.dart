@@ -150,14 +150,21 @@ class _Create_deliveryState extends State<Create_delivery> {
                 _activeStepIndex = index;
               });
             },
-            controlsBuilder: (context, ControlsDetails controls) {
+            controlsBuilder: (context, {onStepContinue, onStepCancel}) {
               final isLastStep = _activeStepIndex == stepList().length - 1;
               return Container(
                 child: Row(
                   children: [
+                    if (_activeStepIndex > 0)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: onStepCancel,
+                          child: const Text('Back'),
+                        ),
+                      ),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: controls.onStepContinue,
+                        onPressed: onStepContinue,
                         child: (isLastStep)
                             ? const Text('Submit')
                             : const Text('Next'),
@@ -166,14 +173,8 @@ class _Create_deliveryState extends State<Create_delivery> {
                     const SizedBox(
                       width: 10,
                     ),
-                    if (_activeStepIndex > 0)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: controls.onStepCancel,
-                          child: const Text('Back'),
-                        ),
-                      )
-                  ],
+                    
+                  ], 
                 ),
               );
             },

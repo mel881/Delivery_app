@@ -8,6 +8,9 @@ import 'signature.dart';
 import 'package:mel_app/creer_livraison.dart';
 import 'aide.dart';
 import 'about.dart';
+import'localisation.dart';
+
+
 
 class Home extends StatefulWidget {
   final List<String> list = List.generate(10, (index) => "Livraison $index");
@@ -284,13 +287,23 @@ class ListViewBuilderEncours extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => DetailLivrasion()),
               ),
               trailing: Wrap(
-                spacing: 12, // space between two icons
+                spacing: 15, // space between two icons
                 children: <Widget>[
-                  Icon(
-                    Icons.place,
-                    color: Colors.grey,
-                    size: 30,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push<MaterialPageRoute>(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  mappPage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.place,  
+                      color: Colors.grey,
+                      size: 40,
+                    ), 
                   ),
+                  
                   IconButton(
                     onPressed: () {
                       Navigator.push<MaterialPageRoute>(
@@ -302,7 +315,7 @@ class ListViewBuilderEncours extends StatelessWidget {
                     icon: Icon(
                       Icons.account_circle,
                       color: Colors.grey,
-                      size: 30,
+                      size: 40,
                     ),
                   ),
                 ],
