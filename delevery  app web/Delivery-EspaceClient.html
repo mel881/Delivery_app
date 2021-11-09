@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <title>DeliveryAdmin - Accueil</title>
+
+</head>
+<body>
+
+    <nav class="bg-purple-600 shadow-lg">
+		<div class="max-w-6xl mx-auto px-4">
+			<div class="">
+				<div class="flex space-x-7 justify-between">
+					<!-- Website Logo -->
+					<div>
+						<a href="#" class="flex items-center py-4 px-2">
+
+							<span class="font-semibold text-white text-lg">Delivery App</span>
+						</a>
+					</div>
+					<!-- Primary Navbar items -->
+					<div class="hidden md:flex items-center left-full space-x-1">
+						<a href="Delivery-adminAccueil.html" class="py-5 px-2 text-black border-b-4 border-black font-semibold">Accueil</a>
+						<a href="Delevery-adminProfil.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Profil</a>
+                        <a href="Delivery-admincreateAccount.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Creer compte</a>
+						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Aide</a>
+						<a href="Delivery-adminconnexion.html" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Deconnexion</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+    <div class="mx-auto mt-4 ">
+        <!-- nav-->
+        <div  class=" pt-2 px-5 w-full shadow-lg flex justify-between ">
+          <span class="px-4 text-gray-800 font-semibold py-2 w-full  border-b-2 border-black rounded-t"><a  href="Delivery-adminAccueil.html">Livraisons</a></span>
+          <span class="bg-white px-4 text-gray-800 font-semibold py-2  w-full border-b-2  border-purple-500  border-black -mb-px"><a href="Delivery-EspaceClient.html">Espace Clients</a></span>
+          <span class="px-4 text-gray-800 font-semibold py-2 w-full  border-b-2 border-black rounded-t"><a href="Delivery-EspaceLivreur.html">Espace Livreur</a></span>
+        </div>
+      
+        <div id="tab-contents">
+         
+
+
+          <div id="second" class="p-4">
+            <!--Espace client -->
+            <div class="flex  justify-between">
+              <!-- recherche et bouton  ajouté-->
+              <div class="pt-2 relative flex mx-auto text-gray-600">
+                <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none focus:border-purple-500 " placeholder="search">
+                <button type="submit" class="absolute -right-1 -top-1 mt-5 mr-4">
+                  <i class=" text-sm fa fa-search"></i>
+                </button>
+              </div>
+              <div class="mx-auto "></div>
+              <div class="
+              mx-auto pt-2"><a href="Delivery-admincreateAccount.html" class="rounded-full shadow-lg font-bold m-2 px-5 py-2 hover:bg-gray-200"><i class="fa fa-plus-circle text-purple-500 text-xl"> </i> Ajouter</a></div>
+            </div>
+            <!--fin recherche-->
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+              <div class="w-full overflow-x-auto">
+                <table class="w-full ">
+                  <thead class="text-md font-semibold  text-left text-gray-900 bg-gray-100  border-gray-600">
+                    <tr class="p-10">
+                      <th class="p-5">Nom</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                <tbody class="bg-white">
+                  <!--Nouveu client -->
+                  <!--le nom  du  client et le status sont des liens qui  menent vers le profil  de l'utilisateur-->
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <a href="#" class="" id="">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight rounded-xl"> <i class="fa fa-circle text-green-700 "></i> Activé </span>
+                    </td>
+                  </a>
+                    <td class="px-4 py-3 text-lg">
+                        <span class="px-2 py-1 text-xs font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"><a href="#" class="" id=""> Desactivée </a></span>
+                        <a href="#" class="p-2"> <i class="fa fa-times-circle text-red-500 "></i></a>
+                          <a href="#" class="p-2"> <i class="fa fa-pen text-grey-500 "></i></a>
+                      </td>
+                  </tr>
+                  <!--nouveau client -->
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <a href="#" class="" id="">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight rounded-xl"> <i class="fa fa-circle text-green-700 "></i> Activé </span>
+                    </td>
+                  </a>
+                    <td class="px-4 py-3 text-lg">
+                        <span class="px-2 py-1 text-xs font-semibold leading-tight text-red-700 bg-red-100 rounded-xl"><a href="#" class="" id=""> Desactivée </a></span>
+                        <a href="#" class="p-2"> <i class="fa fa-times-circle text-red-500 "></i></a>
+                          <a href="#" class="p-2"> <i class="fa fa-pen text-grey-500 "></i></a>
+                      </td>
+                  
+                  </tr>
+                  <!--Nouveau  client -->
+                  <tr class="text-gray-700 border-b rounded-xl">
+                    <a href="#" class="" id="">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center text-sm ">
+                        <div class="relative w-12 h-12 mr-3 rounded-full text-5xl md:block">
+                          <i class="fas fa-user-circle"> </i>
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-black">John doe</p>
+                          <p class="text-xs text-gray-300">Created on Mon 11</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                      <span class="px-2 py-1 font-semibold leading-tight rounded-xl"> <i class="fa fa-circle text-red-500 "></i> Désactivé </span>
+                    </td>
+                  </a>
+                    <td class="px-4 py-3 text-lg">
+                        <span class="px-2 py-1 text-xs font-semibold leading-tight text-green-700 bg-green-100 rounded-xl"><a href="#" class="" id=""> Activé </a></span>
+                        <a href="#" class="p-2"> <i class="fa fa-times-circle text-red-500 "></i></a>
+                          <a href="#" class="p-2"> <i class="fa fa-pen text-grey-500 "></i></a>
+                      </td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  
+                  <td  colspan="3" class=""><div class="flex   justify-end  p-2 space-x-1">
+                    <a href="#" class="flex items-center px-4 font-bold py-2 text-gray-500 bg-gray-300 hover:bg-purple-400   hover:text-white rounded-md">
+                        Précedent
+                    </a>
+                
+                    <a href="#" class="px-4 py-2 text-gray-700 bg-gray-100 rounded-md bg-purple-500 text-white  focus: hover:text-white focus:bg-">
+                        1
+                    </a>
+                    <a href="#" class="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-purple-400 hover:text-white">
+                        2
+                    </a>
+                    <a href="#" class="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-purple-400 hover:text-white">
+                        3
+                    </a>
+                    <a href="#" class="px-4 py-2 font-bold text-gray-500 bg-gray-300 rounded-md hover:bg-purple-400 hover:text-white">
+                        suivant
+                    </a>
+                </div></td>
+              
+                </tr>
+              </tfoot>
+          </table>
+       
+
+
+          
+      </div></div></div>
+
+      <footer class="footer bg-gray-300 relative pt-1">
+        <div class="container  mx-auto ">
+           <div class="  flex flex-col items-center">
+               <div class="sm:w-2/3 text-center py-6">
+                   <p class="text-sm  font-bold mb-2">
+                       © Copyright 2021
+                   </p>
+               </div>
+           </div>
+       </div>
+   </footer>
+        </div>
+    
+</body>
+</html>

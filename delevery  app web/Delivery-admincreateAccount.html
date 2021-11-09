@@ -25,27 +25,13 @@
 					</div>
 					<!-- Primary Navbar items -->
 					<div class="hidden md:flex items-center left-full space-x-1">
-						<a href="" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-30">Accueil</a>
-						<a
-							href=""
-							class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300"
-							>Profil</a
-						>
-                        <a
-							href=""
-							class="py-5 px-2  font-semibold text-black border-b-4 border-black"
-							>Creer compte</a
-						>
-						<a
-							href=""
-							class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300"
-							>Aide</a
-						>
-						<a
-							href=""
-							class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300"
-							>Deconnexion</a
-						>
+							<div class="hidden md:flex items-center left-full space-x-1">
+						<a href="Delivery-adminAccueil.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Accueil</a>
+						<a href="Delevery-adminProfil.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Profil</a>
+                        <a href="Delivery-admincreateAccount.html" class="py-5 px-2 text-black border-b-4 border-black font-semibold">Creer compte</a>
+						<a href="aide.html" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Aide</a>
+						<a href="Delivery-adminconnexion.html" class="py-y px-2 text-white font-semibold hover:text-black transition duration-300">Deconnexion</a>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -53,55 +39,51 @@
 	</nav>
     <div class="flex-col flex items-center justify-center min-h-screen bg-gray-100">
         <div class="">
-            <h3 class="text-2xl text-purple-500  font-bold p-3 text-center">Creer un Compte</h3>
+            <h3 class="text-3xl text-purple-500  font-bold p-3 text-center">Creer un Compte</h3>
         </div>
 
-        <div class="px-5 py-5 mt-2 text-left items-center w-2/5  bg-white border-purple-500  border-1 rounded-2xl shadow-lg">
+        <div class="px-5 py-5 m-5 text-left items-center w-2/5   border-1 bg-white  border-purple-500   rounded-3xl shadow-lg">
             
             <form action="">
-                <div class="mt-4 p-5">
-                    <div class="input-icons flex mt-4 px-2 py-2 w-full">
-                        <div class="p-2">
-                            <input class="input-field shadow-lg w-full p-2  border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Nom">
-                            
-                        </div>
-                        <div class="p-2">
-                            <input class="input-field shadow-lg p-2 w-full  border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Prenom">
-                        </div>
-
+                <div class="p-5">
+                    <div class="input-icons flex flex-col mt-4 px-2 py-2">
+                    
+                        <label class="text-sm font-medium px-2">Nom :</label>
+                        <input id="nom " class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="Nom" placeholder="Entrer  votre nom  d'utilisteur">
                     </div>
 
-                    <div class="input-icons flex mt-4 px-2 py-2">
-                        
+                    <div class="input-icons flex flex-col mt-4 px-2 py-2">
+                        <label class="text-sm font-medium px-2">Email :</label>
                         <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="email" placeholder="Email">
                     </div>
-                    <div class="input-icons flex mt-4 px-2 py-2">
-                      
+                    <div class="input-icons flex flex-col mt-4 px-2 py-2">
+                        <label class="text-sm font-medium px-2">Telephone :</label>
                         <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="number" placeholder="Telephone">
                     </div>
-                    <div class="input-icons flex mt-4 px-2 py-2">
-                        <div class="p-2">
+                    <div class="input-icons flex flex-col mt-4 px-2 py-2">
+                        <label class="text-sm font-medium px-2">Mot de passe :</label>
                             <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="password" placeholder="Password">
                         </div>
-                        <div class="p-2">    
+                        <div class="input-icons flex flex-col mt-4 px-2 py-2"> 
+                            <label class="text-sm font-medium px-2">Mot de passe :</label>
                             <input class="input-field  shadow-lg p-2  w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="password" placeholder="Confirmer">
                          </div>   
-                    </div>
-                    <div class="input-icons flex mt-4 px-2 py-2">
-                        
+                    
+                    <div class="input-icons flex flex-col mt-4 px-2 py-2">
+                        <label for="nom" class="p-2 font-semibold ">Adresse</label>
                         <input class="input-field  shadow-lg p-2 w-full border border-transparent rounded-2xl  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Adresse">
                     </div>
                     <div class="input-icons flex mt-4 px-3 py-3">
                         <label class="p-2 items-center">
-                            <input type="radio" class="form-radio text-purple-500" name="radio" value="2">
+                            <input type="radio" class="form-radio " name="radio" value="">
                             <span class="ml-2">Client</span>
                           </label>
                           <label class="p-2 items-center">
-                            <input type="radio" class="form-radio" name="radio" value="2">
+                            <input type="radio" class="form-radio" name="radio-colors" value="">
                             <span class="ml-2">Livreur</span>
-                          </label>
+                          </label> 
                            <label class=" p-2 items-center">
-                            <input type="radio" class="form-radio  text-indigo-600" name="radio" value="2">
+                            <input type="radio" class="form-radio " name="radio" value="">
                             <span class="ml-2">Admistrateur</span>
                           </label>
                     </div>
@@ -114,7 +96,17 @@
             </form>
         </div>
     </div>
-
+<footer class="footer bg-gray-300 relative pt-1">
+     <div class="container  mx-auto ">
+        <div class="  flex flex-col items-center">
+            <div class="sm:w-2/3 text-center py-6">
+                <p class="text-sm  font-bold mb-2">
+                    © Copyright 2021
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

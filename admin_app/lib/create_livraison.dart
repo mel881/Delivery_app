@@ -154,7 +154,7 @@ class _Create_deliveryState extends State<Create_delivery> {
                 _activeStepIndex = index;
               });
             },
-            controlsBuilder: (context, ControlsDetails controls) {
+            controlsBuilder: (context, {onStepContinue, onStepCancel}) {
               final isLastStep = _activeStepIndex == stepList().length - 1;
               return Container(
                 child: Row(
@@ -174,7 +174,7 @@ class _Create_deliveryState extends State<Create_delivery> {
                                       builder: (context) => Home()),
                                 );
                               }
-                            : controls.onStepContinue,
+                            : onStepContinue,
                         child: (isLastStep)
                             ? const Text('Submit')
                             : const Text('Next'),
@@ -186,7 +186,7 @@ class _Create_deliveryState extends State<Create_delivery> {
                     if (_activeStepIndex > 0)
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: controls.onStepCancel,
+                          onPressed: onStepCancel,
                           child: const Text('Back'),
                         ),
                       )
