@@ -159,22 +159,19 @@ class _Create_deliveryState extends State<Create_delivery> {
               return Container(
                 child: Row(
                   children: [
+                    if (_activeStepIndex > 0)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: onStepCancel,
+                          child: const Text('Back'),
+                        ),
+                      ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: isLastStep
-                            ? () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          'données en cours de traitement')),
-                                );
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Home()),
-                                );
-                              }
-                            : onStepContinue,
+                        onPressed: onStepContinue,
                         child: (isLastStep)
                             ? const Text('Submit')
                             : const Text('Next'),
@@ -183,13 +180,6 @@ class _Create_deliveryState extends State<Create_delivery> {
                     const SizedBox(
                       width: 10,
                     ),
-                    if (_activeStepIndex > 0)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: onStepCancel,
-                          child: const Text('Back'),
-                        ),
-                      )
                   ],
                 ),
               );

@@ -30,6 +30,27 @@ class _AideState extends State<Aide> {
               const SizedBox(
                 height: 15,
               ),
+              BuildExpansionTileList(Icon(Icons.place),
+                  "Comment obtenir ces Coordonner Geographique", [
+                ListTile(
+                  leading: Icon(Icons.chevron_right, size: 32),
+                  title: Text(
+                    "Ouvrir Google map",
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.chevron_right, size: 32),
+                  title: Text(
+                    "Appuyer et  maintener votre doigt sur la position souhaité",
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.chevron_right, size: 32),
+                  title: Text(
+                    "les Coordonnée s'affiche dans la barre de recherche en haut",
+                  ),
+                ),
+              ]),
               BuildExpansionTileText(
                   const Icon(Icons.create),
                   "Creer une Livraison",
@@ -80,4 +101,8 @@ Widget BuildExpansionTileText(Icon icon, String titre, String contenue) {
       height: 30,
     ),
   ]);
+}
+
+Widget BuildExpansionTileList(Icon icon, String titre, List<Widget> children) {
+  return ExpansionTile(leading: icon, title: Text(titre), children: children);
 }

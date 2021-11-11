@@ -8,6 +8,7 @@ import 'signature.dart';
 import 'package:mel_app/creer_livraison.dart';
 import 'aide.dart';
 import 'about.dart';
+import 'localisation.dart';
 
 class Home extends StatefulWidget {
   final List<String> list = List.generate(10, (index) => "Livraison $index");
@@ -15,6 +16,8 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
+List<String> items = ["Livraison"];
 
 class _HomeState extends State<Home> {
   @override
@@ -32,6 +35,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           actions: <Widget>[
+            IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
             IconButton(
               onPressed: () {
                 showSearch<String>(
@@ -284,12 +288,20 @@ class ListViewBuilderEncours extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => DetailLivrasion()),
               ),
               trailing: Wrap(
-                spacing: 12, // space between two icons
+                spacing: 15, // space between two icons
                 children: <Widget>[
-                  Icon(
-                    Icons.place,
-                    color: Colors.grey,
-                    size: 30,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push<MaterialPageRoute>(
+                        context,
+                        MaterialPageRoute(builder: (context) => mappPage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.place,
+                      color: Colors.grey,
+                      size: 40,
+                    ),
                   ),
                   IconButton(
                     onPressed: () {
@@ -302,7 +314,7 @@ class ListViewBuilderEncours extends StatelessWidget {
                     icon: Icon(
                       Icons.account_circle,
                       color: Colors.grey,
-                      size: 30,
+                      size: 40,
                     ),
                   ),
                 ],

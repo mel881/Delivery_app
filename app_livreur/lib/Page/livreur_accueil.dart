@@ -33,7 +33,6 @@ class _AccueilState extends State<Accueil> {
               ),
             ),
             actions: <Widget>[
-              IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
               IconButton(
                 onPressed: () {
                   showSearch(context: context, delegate: Search(list));

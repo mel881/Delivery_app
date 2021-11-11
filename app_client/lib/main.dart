@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mel_app/Livreur.dart';
 import 'package:mel_app/login.dart';
+import 'package:mel_app/payer_livraison.dart';
 
 //import 'package:flutter_gen/gen_l10n/gall bery_localizations.dart';
 void main() => runApp(client_test());
@@ -14,7 +15,7 @@ class client_test extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const Login(),
+        '/': (context) => const Payer(),
         '/accueil': (context) => Home(),
       },
     );
