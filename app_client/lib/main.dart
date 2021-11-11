@@ -15,7 +15,7 @@ class client_test extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const Payer(),
+        '/': (context) => const Login(),
         '/accueil': (context) => Home(),
       },
     );

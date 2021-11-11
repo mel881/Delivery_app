@@ -14,6 +14,12 @@ List<Step> stepList() => [
         isActive: true,
         title: const Text('Numero  de transaction'),
         content: input_field("Numero", "Entrer le numero", _phoneController),
+      ),
+      Step(
+        state: StepState.indexed,
+        isActive: true,
+        title: const Text('Numero  de transaction'),
+        content: input_field("Numero", "Entrer le numero", _phoneController),
       )
     ];
 
