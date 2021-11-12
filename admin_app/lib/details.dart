@@ -60,6 +60,7 @@ class _DetailLivrasionState extends State<DetailLivrasion> {
                     information("Lieu de Depart", "Accasia"),
                     information("Lieu d'arrivé", "Minboman"),
                     information("Livreur", "John Doe"),
+                     information("Statut", "Choisi"),
                   ],
                 ),
               ),

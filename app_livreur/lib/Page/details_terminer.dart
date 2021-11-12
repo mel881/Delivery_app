@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:app_livreur/widget/buildwidget.dart';
+import 'code_secret.dart';
 
-class DetailLivrasion extends StatefulWidget {
-  const DetailLivrasion({Key? key}) : super(key: key);
+class DetailTerminer extends StatefulWidget {
+  const DetailTerminer({Key? key}) : super(key: key);
 
   @override
-  _DetailLivrasionState createState() => _DetailLivrasionState();
+  _DetailTerminerState createState() => _DetailTerminerState();
 }
 
-class _DetailLivrasionState extends State<DetailLivrasion> {
+class _DetailTerminerState extends State<DetailTerminer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,10 +62,28 @@ class _DetailLivrasionState extends State<DetailLivrasion> {
                     information("Lieu de Depart", "Accasia"),
                     information("Lieu d'arrivé", "Minboman"),
                     information("Livreur", "John Doe"),
-                    information("Statut", "Encours"),
+                      information("Statut", "Encours"),
                   ],
                 ),
               ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CodeSecret()));
+                },
+                child: Text(
+                  "Terminer",
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(10, 30),
+                    primary: Colors.green.shade200,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32))),
+              ),  
             ],
           ),
         ),
