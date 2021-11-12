@@ -17,8 +17,8 @@ class Accueil extends StatefulWidget {
 }
 
 class _AccueilState extends State<Accueil> {
-  @override
   final List<String> list = List.generate(10, (index) => "Livraison $index");
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 1,
