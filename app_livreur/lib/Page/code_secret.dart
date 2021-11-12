@@ -1,6 +1,7 @@
 import 'package:app_livreur/widget/buildwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:app_livreur/Page/livreur_accueil.dart';
 
 import 'choix_livraison.dart';
 
@@ -75,12 +76,16 @@ class _CodeSecretState extends State<CodeSecret> {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                   
                         if (_formKey.currentState!.validate()) {
+                          Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Accueil()));
+               
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Traitement de la demande')),
                           );
-                          Navigator.pop(context);
+                         
                         }
                       },
                       child: const Text(

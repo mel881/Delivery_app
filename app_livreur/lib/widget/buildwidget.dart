@@ -1,14 +1,15 @@
 import 'package:app_livreur/Page/choix_livraison.dart';
-import 'package:app_livreur/Page/code_secret.dart';
+import 'package:app_livreur/Page/localisation.dart';
 import 'package:app_livreur/Page/details_commissions.dart';
 import 'package:flutter/material.dart';
+import'package:app_livreur/Page/details_terminer.dart';
 
 Widget createListTabs() {
   /*Ce widget permet de creer  un liste de livrason posté.
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
   return ListView.builder(
-      itemCount: 5, // donné.lenght
+      itemCount: 15, // donné.lenght
       itemBuilder: (BuildContext context,
           int index) /* index nous permet d'itterer sur les differentes valeur de notre variable */ {
         return ListTile(
@@ -32,12 +33,31 @@ Widget createListTabs2() {
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
   return ListView.builder(
-      itemCount: 5,
+      itemCount: 15,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
+           onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailTerminer ()));
+          },
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[
+               IconButton(
+                    onPressed: () {
+                      Navigator.push<MaterialPageRoute>(
+                        context,
+                        MaterialPageRoute(builder: (context) => mappPage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.place,
+                      color: Colors.grey,
+                      size: 40,
+                    ),
+                  ),
               ElevatedButton(
                 // ouverture de la fenetre popup
                 onPressed: () => showDialog<String>(
@@ -77,24 +97,7 @@ Widget createListTabs2() {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32))),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CodeSecret()));
-                },
-                child: Text(
-                  "Terminer",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.green.shade700,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(10, 30),
-                    primary: Colors.green.shade200,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
+              
             ],
           ),
           title: const Text('BIG Burgur'), //data[index].nom
@@ -105,38 +108,27 @@ Widget createListTabs2() {
 }
 
 Widget createListTabs3() {
-  /*Ce widget permet de creer  un liste de livrason terminées.
+  /*Ce widget permet de creer  un liste de livraison terminées.
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
   return ListView.builder(
-      itemCount: 5,
+      itemCount: 15,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailLivrasion ()));
+          },
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DetailLivrasion()));
-                },
-                child: Text(
-                  "Details",
-                  style: TextStyle(
-                    color: Colors.yellow.shade700,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow.shade100,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32))),
-              ),
+              Text("terminé il y'a 2 min"),
             ],
           ),
           title: Text('BIG Burgur'),
-          subtitle: Text('Terminate on 20 oct2021'),
+          subtitle: Text('Create  on 20 oct2021'),
         );
       });
 }

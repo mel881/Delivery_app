@@ -18,6 +18,7 @@ class Accueil extends StatefulWidget {
 
 class _AccueilState extends State<Accueil> {
   @override
+  List <bool> payer= [false,true,false,true,false,false,true,false,true,false,false,true,false,true,false];
   final List<String> list = List.generate(10, (index) => "Livraison $index");
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -116,7 +117,7 @@ class _AccueilState extends State<Accueil> {
           ),
           body: TabBarView(children: <Widget>[
             Center(child: createListTabs()),
-            Center(child: createListTabs2()),
+            Center(child: createListTabs2(payer)),
             Center(child: createListTabs3()),
           ])),
     );

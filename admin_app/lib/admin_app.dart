@@ -1,3 +1,4 @@
+import 'package:admin_app/localisation.dart';
 import 'package:admin_app/profil_admin.dart';
 import 'package:flutter/material.dart';
 import 'create_account.dart';
@@ -314,7 +315,8 @@ Widget livraison(List<String> stat, context) {
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
             );
-          } else {
+          } else if(stat[index]=="encours")
+          {
             return ListTile(
               onTap: () {
                 Navigator.push(
@@ -322,7 +324,35 @@ Widget livraison(List<String> stat, context) {
                   MaterialPageRoute(builder: (context) => DetailLivrasion()),
                 );
               },
-              trailing: OutlinedButton(
+              trailing: Row(
+                children: <Widget>[ 
+                  Text(stat[index]),
+                IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => mappPage()),
+                  );
+                  print('Received click');
+                },
+                icon: Icon(Icons.place,color: Colors.grey) ,
+              ),
+              ],
+              ),
+              title: Text('BIG Burgur'),
+              subtitle: Text('Created on 20 oct2021'),
+                     
+                     );
+          }
+          else {
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailLivrasion()),
+                );
+              },
+              trailing: TextButton(
                 onPressed: () {
                   print('Received click');
                 },

@@ -70,10 +70,10 @@ class _Create_deliveryState extends State<Create_delivery> {
                   SizedBox(height: 16),
                   textFiel("selectionner", "ville", true, villeControl, false),
                   SizedBox(height: 16),
-                  textFiel("Entrer le lieu de  depart du coli",
+                  textFiel("Entrer la longitude et la latitude",
                       "Lieu de depart", false, lieuDepControl, false),
                   SizedBox(height: 16),
-                  textFiel("Entrer le lieu d'arrivé du coli", "Lieu d'arrivé",
+                  textFiel("Entrer la longitude et la latitude", "Lieu d'arrivé",
                       false, lieuArrControl, false),
                   SizedBox(height: 16),
                   textFiel("Entrer le nom du recepteur du colis",
@@ -159,16 +159,6 @@ class _Create_deliveryState extends State<Create_delivery> {
               return Container(
                 child: Row(
                   children: [
-                    if (_activeStepIndex > 0)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: onStepCancel,
-                          child: const Text('Back'),
-                        ),
-                      ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Expanded(
                       child: ElevatedButton(
                         onPressed: onStepContinue,
@@ -180,7 +170,18 @@ class _Create_deliveryState extends State<Create_delivery> {
                     const SizedBox(
                       width: 10,
                     ),
-                  ],
+
+                    if (_activeStepIndex > 0)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: onStepCancel,
+                          child: const Text('Back'),
+                        ),
+                      ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                                      ],
                 ),
               );
             },
