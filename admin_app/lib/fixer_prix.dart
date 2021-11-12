@@ -12,6 +12,7 @@ class FixerPrix extends StatefulWidget {
 
 class _FixerPrixState extends State<FixerPrix> {
   TextEditingController prixControl = TextEditingController();
+  TextEditingController payerControl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +65,8 @@ class _FixerPrixState extends State<FixerPrix> {
                     information("Livreur", ""),
                     information("Statut", "Postée"),
                     SizedBox(height: 30),
-                    textFiel("Payer", "Selectionner",
-                        true, prixControl, false),
+                    textFiel( "Selectionner","Payer",
+                        true,payerControl, false),
                     SizedBox(height: 30),
                     textFiel("Entrer le cout de la livraison", "Fixer le prix",
                         false, prixControl, false),

@@ -3,6 +3,7 @@ import 'package:app_livreur/Page/localisation.dart';
 import 'package:app_livreur/Page/details_commissions.dart';
 import 'package:flutter/material.dart';
 import'package:app_livreur/Page/details_terminer.dart';
+import'package:app_livreur/Page/details_terminer1.dart';
 
 Widget createListTabs() {
   /*Ce widget permet de creer  un liste de livrason posté.
@@ -28,7 +29,7 @@ Widget createListTabs() {
       });
 }
 
-Widget createListTabs2() {
+Widget createListTabs2(List<bool> payer ) {
   /*Ce widget permet de creer  un liste de livrason encours.
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
@@ -37,11 +38,19 @@ Widget createListTabs2() {
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
            onTap: () {
+             if (payer[index]==false){
             Navigator.push(
                 context,
                 MaterialPageRoute(
+                    builder: (context) => DetailTerminerImpayer()));
+            }
+            else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(
                     builder: (context) => DetailTerminer ()));
-          },
+            };
+             },
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[

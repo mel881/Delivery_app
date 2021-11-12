@@ -17,11 +17,9 @@ class Accueil extends StatefulWidget {
 }
 
 class _AccueilState extends State<Accueil> {
-<<<<<<< HEAD
-  @override
-  List <bool> payer= [false,true,false,true,false,false,true,false,true,false,false,true,false,true,false];
-=======
->>>>>>> d3c5093c6ed9b62e37820b1d430fc09e6b442f92
+
+  
+  List <bool> payer= [false,true,false,true,false,false,true,false,true,false,false,true,false,true,fal
   final List<String> list = List.generate(10, (index) => "Livraison $index");
   @override
   Widget build(BuildContext context) {

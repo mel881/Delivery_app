@@ -315,8 +315,8 @@ Widget livraison(List<String> stat, context) {
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
             );
-          } else if(stat[index]=="encours")
-          {
+          } 
+          if(stat[index]=="encours"){
             return ListTile(
               onTap: () {
                 Navigator.push(
@@ -324,25 +324,31 @@ Widget livraison(List<String> stat, context) {
                   MaterialPageRoute(builder: (context) => DetailLivrasion()),
                 );
               },
-              trailing: Row(
-                children: <Widget>[ 
-                  Text(stat[index]),
-                IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => mappPage()),
-                  );
-                  print('Received click');
-                },
-                icon: Icon(Icons.place,color: Colors.grey) ,
-              ),
+              trailing:Wrap( 
+                spacing:14,
+                children:[
+                   IconButton(
+                 icon: Icon(Icons.place,color: Colors.grey, size:30),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => mappPage()),
+                    );
+                    },
+
+               ),
+               TextButton(
+                 onPressed:(){},
+                child: Text(stat[index]),
+                ),
+               
+              
+              
               ],
               ),
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
-                     
-                     );
+            );
           }
           else {
             return ListTile(
@@ -362,6 +368,7 @@ Widget livraison(List<String> stat, context) {
               subtitle: Text('Created on 20 oct2021'),
             );
           }
+      
         }),
     floatingActionButton: FloatingActionButton(
       onPressed: () {
