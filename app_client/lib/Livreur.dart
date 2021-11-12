@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mel_app/payer_livraison.dart';
 import 'login.dart';
 import 'registers.dart';
 import 'details.dart';
@@ -35,7 +36,14 @@ class _HomeState extends State<Home> {
             ),
           ),
           actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push<MaterialPageRoute>(
+                    context,
+                    MaterialPageRoute(builder: (context) => Payer()),
+                  );
+                },
+                icon: Icon(Icons.notifications)),
             IconButton(
               onPressed: () {
                 showSearch<String>(
