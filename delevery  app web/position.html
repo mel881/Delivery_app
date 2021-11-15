@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="tailwind.min.css"/>
+    <script src="./js/position.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <title>DeliveryAdmin - Accueil</title>
+    
+</head>
+<body>
+ <div class="bg-gray-100">
+    <nav class="bg-purple-500 shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="">
+                    <div class="flex space-x-7 justify-between">
+                        <!-- Website Logo -->
+                        <div>
+                            <a href="#" class="flex items-center py-4 px-2">
+                                
+                                <span class="font-semibold text-white text-lg">Delivery App</span>
+                            </a>
+                        </div>
+                        <!-- Primary Navbar items -->
+                        <div class="hidden md:flex items-center left-full space-x-1">
+                            <div class="hidden md:flex items-center left-full space-x-1">
+                                <a href="Delivery-adminAccueil.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Accueil</a>
+                                <a href="Delevery-adminProfil.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Profil</a>
+                                <a href="Delivery-admincreateAccount.html" class="py-4 px-2 text-white font-semibold hover:text-black transition duration-300">Creer compte</a>
+                                <a href="" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Aide</a>
+                                <a href="Delivery-adminconnexion.html" class="py-4 px-2 text-white font-semibold hover:text-black  transition duration-300">Deconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+   
+    <div class=" min-h-screen mx-auto  bg-gray-100">
+        <div id="map" class=" mr-10 mr-10 min-h-screen p-10 w-full "></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL-3Vqf4UCkRFiYZ0wLJ3qRGT9WBiYbns&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+    </div>
+ </div>
+</body>
+
+</html>

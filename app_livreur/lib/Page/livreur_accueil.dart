@@ -17,9 +17,6 @@ class Accueil extends StatefulWidget {
 }
 
 class _AccueilState extends State<Accueil> {
-  final List<String> list = List.generate(10, (index) => "Livraison $index");
-
-  @override
   List<bool> payer = [
     false,
     true,
@@ -38,25 +35,9 @@ class _AccueilState extends State<Accueil> {
     false
   ];
 
+  final List<String> list = List.generate(10, (index) => "Livraison $index");
+  @override
   Widget build(BuildContext context) {
-    List<bool> payer = [
-      false,
-      true,
-      false,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false,
-      false,
-      true,
-      false,
-      true,
-      false
-    ];
-
     return DefaultTabController(
       initialIndex: 1,
       length: 3,

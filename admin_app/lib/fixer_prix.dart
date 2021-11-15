@@ -17,7 +17,7 @@ class _FixerPrixState extends State<FixerPrix> {
     return Scaffold(
       appBar: AppBar(
         title: Column(
-          children: [Text("Details")],
+          children: [Text("Fixer  le prix")],
         ),
       ),
       body: SingleChildScrollView(

@@ -2,7 +2,8 @@ import 'package:app_livreur/Page/choix_livraison.dart';
 import 'package:app_livreur/Page/localisation.dart';
 import 'package:app_livreur/Page/details_commissions.dart';
 import 'package:flutter/material.dart';
-import'package:app_livreur/Page/details_terminer.dart';
+import 'package:app_livreur/Page/details_terminer.dart';
+import 'package:app_livreur/Page/details_terminer1.dart';
 
 Widget createListTabs() {
   /*Ce widget permet de creer  un liste de livrason posté.
@@ -28,7 +29,7 @@ Widget createListTabs() {
       });
 }
 
-Widget createListTabs2() {
+Widget createListTabs2(List<bool> payer) {
   /*Ce widget permet de creer  un liste de livrason encours.
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
@@ -36,28 +37,31 @@ Widget createListTabs2() {
       itemCount: 15,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
-           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => DetailTerminer ()));
+          onTap: () {
+            payer[index]
+                ? Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailTerminer()))
+                : Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailTerminerImpayer()));
           },
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[
-               IconButton(
-                    onPressed: () {
-                      Navigator.push<MaterialPageRoute>(
-                        context,
-                        MaterialPageRoute(builder: (context) => mappPage()),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.place,
-                      color: Colors.grey,
-                      size: 40,
-                    ),
-                  ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push<MaterialPageRoute>(
+                    context,
+                    MaterialPageRoute(builder: (context) => mappPage()),
+                  );
+                },
+                icon: Icon(
+                  Icons.place,
+                  color: Colors.grey,
+                  size: 40,
+                ),
+              ),
               ElevatedButton(
                 // ouverture de la fenetre popup
                 onPressed: () => showDialog<String>(
@@ -97,7 +101,6 @@ Widget createListTabs2() {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32))),
               ),
-              
             ],
           ),
           title: const Text('BIG Burgur'), //data[index].nom
@@ -116,10 +119,8 @@ Widget createListTabs3() {
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => DetailLivrasion ()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DetailLivrasion()));
           },
           trailing: Wrap(
             spacing: 12, // space between two icons

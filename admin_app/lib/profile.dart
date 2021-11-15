@@ -36,7 +36,7 @@ class _ProfileState extends State<Profile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mon Profil"),
+        title: Text("john Doe"),
       ),
       body: SingleChildScrollView(
           child: Center(

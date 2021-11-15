@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import'payer_livraison.dart';
+import 'payer_livraison.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:app_livreur/widget/buildwidget.dart';
 import 'code_secret.dart';
 
-
 class DetailTerminerImpayer extends StatefulWidget {
-  const DetailTerminerImpayer({ Key? key }) : super(key: key);
+  const DetailTerminerImpayer({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _DetailTerminerImpayerState createState() => _DetailTerminerImpayerState();
@@ -15,7 +16,7 @@ class DetailTerminerImpayer extends StatefulWidget {
 class _DetailTerminerImpayerState extends State<DetailTerminerImpayer> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Column(
           children: [Text("Details")],
@@ -64,11 +65,11 @@ class _DetailTerminerImpayerState extends State<DetailTerminerImpayer> {
                     information("Lieu de Depart", "Accasia"),
                     information("Lieu d'arrivé", "Minboman"),
                     information("Livreur", "John Doe"),
-                      information("Statut", "Encours"),
+                    information("Statut", "Encours"),
                   ],
                 ),
               ),
-            ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Payer()));
@@ -85,12 +86,11 @@ class _DetailTerminerImpayerState extends State<DetailTerminerImpayer> {
                     primary: Colors.green.shade200,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32))),
-              ),  
+              ),
             ],
           ),
         ),
       ),
     );
-      
   }
 }

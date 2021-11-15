@@ -36,14 +36,26 @@ class _HomeState extends State<Home> {
             ),
           ),
           actions: <Widget>[
-            IconButton(
-                onPressed: () {
-                  Navigator.push<MaterialPageRoute>(
-                    context,
-                    MaterialPageRoute(builder: (context) => Payer()),
-                  );
+            PopupMenuButton(
+                icon: Icon(Icons.notifications),
+                onSelected: (result) {
+                  if (result != 0) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Payer()),
+                    );
+                  }
                 },
-                icon: Icon(Icons.notifications)),
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Text("Big Burger 1"),
+                        value: 1,
+                      ),
+                      PopupMenuItem(
+                        child: Text("Big Burger 2"),
+                        value: 2,
+                      )
+                    ]),
             IconButton(
               onPressed: () {
                 showSearch<String>(

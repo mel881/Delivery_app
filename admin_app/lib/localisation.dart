@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart'; 
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class mappPage extends StatefulWidget {
   //final Station t;
@@ -68,7 +68,6 @@ class mappPageState extends State<mappPage> {
                   SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: _onAddMarkerButtonPressed,
-                  
                     child: const Icon(Icons.add_location, size: 36.0),
                   ),
                 ],

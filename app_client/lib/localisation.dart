@@ -47,7 +47,7 @@ class mappPageState extends State<mappPage> {
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
               target: _center,
-              zoom: 11.0,
+              zoom: 16,
             ),
             mapType: _currentMapType,
             markers: _markers,
@@ -66,11 +66,19 @@ class mappPageState extends State<mappPage> {
                     child: const Icon(Icons.map, size: 36.0),
                   ),
                   SizedBox(height: 16.0),
-                  FloatingActionButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100))),
                     onPressed: _onAddMarkerButtonPressed,
-                    materialTapTargetSize: MaterialTapTargetSize.padded,
-                    backgroundColor: Colors.green,
-                    child: const Icon(Icons.add_location, size: 36.0),
+                    //materialTapTargetSize: MaterialTapTargetSize.padded,
+
+                    child: Icon(
+                      Icons.add_location,
+                      size: 36,
+                      color: Colors.green,
+                    ),
                   ),
                 ],
               ),
