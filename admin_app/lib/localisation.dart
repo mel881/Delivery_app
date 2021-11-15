@@ -66,9 +66,15 @@ class mappPageState extends State<mappPage> {
                     child: const Icon(Icons.map, size: 36.0),
                   ),
                   SizedBox(height: 16.0),
-                  ElevatedButton(
+                  IconButton(
                     onPressed: _onAddMarkerButtonPressed,
+<<<<<<< HEAD
                     child: const Icon(Icons.add_location, size: 36.0),
+=======
+                  
+                    icon: const Icon(Icons.add_location, size: 36.0 ,
+                    color: Colors.green),
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
                   ),
                 ],
               ),

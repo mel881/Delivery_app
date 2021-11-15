@@ -315,7 +315,12 @@ Widget livraison(List<String> stat, context) {
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
             );
+<<<<<<< HEAD
           } else if (stat[index] == "encours") {
+=======
+          } 
+          if(stat[index]=="encours"){
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
             return ListTile(
               onTap: () {
                 Navigator.push(
@@ -323,6 +328,7 @@ Widget livraison(List<String> stat, context) {
                   MaterialPageRoute(builder: (context) => DetailLivrasion()),
                 );
               },
+<<<<<<< HEAD
               trailing: Wrap(
                 verticalDirection: VerticalDirection.up,
                 children: <Widget>[
@@ -347,11 +353,39 @@ Widget livraison(List<String> stat, context) {
                     ),
                   ),
                 ],
+=======
+              trailing:Wrap( 
+                spacing:14,
+                children:[
+                   IconButton(
+                 icon: Icon(Icons.place,color: Colors.grey, size:30),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => mappPage()),
+                    );
+                    },
+
+               ),
+               TextButton(
+                 onPressed:(){},
+                child: Text(stat[index]),
+                ),
+               
+              
+              
+              ],
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
               ),
               title: Text('BIG Burgur'),
               subtitle: Text('Created on 20 oct2021'),
             );
+<<<<<<< HEAD
           } else {
+=======
+          }
+          else {
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
             return ListTile(
               onTap: () {
                 Navigator.push(
@@ -369,6 +403,7 @@ Widget livraison(List<String> stat, context) {
               subtitle: Text('Created on 20 oct2021'),
             );
           }
+      
         }),
     floatingActionButton: FloatingActionButton(
       onPressed: () {

@@ -2,8 +2,13 @@ import 'package:app_livreur/Page/choix_livraison.dart';
 import 'package:app_livreur/Page/localisation.dart';
 import 'package:app_livreur/Page/details_commissions.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:app_livreur/Page/details_terminer.dart';
 import 'package:app_livreur/Page/details_terminer1.dart';
+=======
+import'package:app_livreur/Page/details_terminer.dart';
+import'package:app_livreur/Page/details_terminer1.dart';
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
 
 Widget createListTabs() {
   /*Ce widget permet de creer  un liste de livrason posté.
@@ -29,7 +34,11 @@ Widget createListTabs() {
       });
 }
 
+<<<<<<< HEAD
 Widget createListTabs2(List<bool> payer) {
+=======
+Widget createListTabs2(List<bool> payer ) {
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
   /*Ce widget permet de creer  un liste de livrason encours.
   avec les données on passe juste en paramtre la variables constant  les livraisons
    */
@@ -37,6 +46,7 @@ Widget createListTabs2(List<bool> payer) {
       itemCount: 15,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
+<<<<<<< HEAD
           onTap: () {
             payer[index]
                 ? Navigator.push(context,
@@ -46,6 +56,22 @@ Widget createListTabs2(List<bool> payer) {
                     MaterialPageRoute(
                         builder: (context) => DetailTerminerImpayer()));
           },
+=======
+           onTap: () {
+             if (payer[index]==false){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailTerminerImpayer()));
+            }
+            else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailTerminer ()));
+            };
+             },
+>>>>>>> 756a9bdad13e39d743a00e1538b36d3c6e6b6c37
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[
