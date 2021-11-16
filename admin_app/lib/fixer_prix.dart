@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'create_livraison.dart';
+
 import 'admin_app.dart';
 
 class FixerPrix extends StatefulWidget {
@@ -65,8 +65,8 @@ class _FixerPrixState extends State<FixerPrix> {
                     information("Livreur", ""),
                     information("Statut", "Postée"),
                     SizedBox(height: 30),
-                    textFiel( "Selectionner","Payer",
-                        true,payerControl, false),
+                    textFiel(
+                        "Payer", "Selectionner", true, payerControl, false),
                     SizedBox(height: 30),
                     textFiel("Entrer le cout de la livraison", "Fixer le prix",
                         false, prixControl, false),
@@ -119,3 +119,45 @@ Widget information(String label, String value) {
 
 
 // fonction pour generer les inputs
+// fonction permettant de creer les inputs
+Widget textFiel(String hintText, String label, bool select,
+    TextEditingController control, bool photo) {
+  String controller;
+  var items = [
+    'avant la livraison ',
+    'Apres la livraison',
+    
+  ];
+
+  return TextFormField(
+    controller: control,
+    decoration: InputDecoration(
+      prefixIcon: photo ? Icon(Icons.add_a_photo) : null,
+      suffixIcon: select
+          ? PopupMenuButton<String>(
+              icon: const Icon(Icons.arrow_drop_down),
+              onSelected: (String value) {
+                control.text = value;
+              },
+              itemBuilder: (BuildContext context) {
+                return items.map<PopupMenuItem<String>>((String value) {
+                  return new PopupMenuItem(
+                      child: new Text(value), value: value);
+                }).toList();
+              },
+            )
+          : null,
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(23)),
+      labelText: label,
+      hintText: hintText,
+    ),
+    // The validator receives the text that the user has entered.
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter some text';
+      }
+      return null;
+    },
+  );
+}
