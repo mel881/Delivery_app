@@ -21,7 +21,7 @@ Widget createListTabs() {
                     builder: (context) => const ChoixLivrasion()));
           },
           trailing: Wrap(
-            children: <Widget>[const Text("il y'as 2 min")],
+            children: <Widget>[const Text("il y'a 2 min")],
           ),
           title: const Text('BIG Burgur'), // donné[index].nom
           subtitle: const Text('Prix : 2500 Fcfa'), //donné[index].prix

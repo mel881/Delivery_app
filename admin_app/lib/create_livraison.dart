@@ -27,6 +27,40 @@ class _Create_deliveryState extends State<Create_delivery> {
   TextEditingController contactControl = TextEditingController();
   TextEditingController photoControl = TextEditingController();
 
+  List<String> region = [
+    "Nord",
+    "Extreme-Nord",
+    "Adamaoua",
+    "Centre",
+    "Littoral",
+    "Sud",
+    "Est",
+    "Ouest",
+    "Nord-Ouest",
+    "Sud-Ouest"
+  ];
+  List<String> ville = [
+    "yaoundé ",
+    "Douala",
+    "Kribi",
+    "Dscang",
+    "Maroua",
+  ];
+  List<String> poids = [
+    "1-10 Kg ",
+    "10-20 Kg",
+    "20-30 kg",
+    "30-50 KG",
+  ];
+  List<String> encombrement = [
+    "petit",
+    "Moyen",
+    "Grand",
+  ];
+  List<String> paiement = [
+    "orange Money",
+    "MTN Money",
+  ];
   List<Step> stepList() => [
         Step(
           state: _activeStepIndex <= 0 ? StepState.editing : StepState.complete,
@@ -36,21 +70,21 @@ class _Create_deliveryState extends State<Create_delivery> {
             child: Column(
               children: [
                 SizedBox(height: 15),
-                textFiel("Nom", "nom", false, nameControl, false),
+                textFiel("Nom", "nom", nameControl, false),
                 SizedBox(height: 16),
-                textFiel("Description du colis", "description", false,
+                textFiel("Description du colis", "description",
                     descriptionControl, false),
                 SizedBox(height: 16),
-                textFiel("Selectionner", "poids", true, poidsControl, false),
+                selectFiel("Selectionner", "poids", poidsControl, false, poids),
                 SizedBox(height: 16),
-                textFiel("photos", "selectionner une photo du colis", false,
+                textFiel("photos", "selectionner une photo du colis",
                     photoControl, true),
                 SizedBox(height: 16),
-                textFiel("selectionner", "encombrement", true,
-                    encombrementControl, false),
+                selectFiel("selectionner", "encombrement", encombrementControl,
+                    false, encombrement),
                 SizedBox(height: 16),
-                textFiel(
-                    "Selectionner", "paiement", true, paiementControl, false),
+                selectFiel("Selectionner", "paiement", paiementControl, false,
+                    paiement),
                 SizedBox(height: 16),
               ],
             ),
@@ -65,21 +99,22 @@ class _Create_deliveryState extends State<Create_delivery> {
               child: Column(
                 children: [
                   SizedBox(height: 16),
-                  textFiel(
-                      "selectionner", "region", true, regionControl, false),
+                  selectFiel(
+                      "selectionner", "region", regionControl, false, region),
                   SizedBox(height: 16),
-                  textFiel("selectionner", "ville", true, villeControl, false),
+                  selectFiel(
+                      "selectionner", "ville", villeControl, false, ville),
                   SizedBox(height: 16),
-                  textFiel("Entrer la longitude et la latitude",
-                      "Lieu de depart", false, lieuDepControl, false),
+                  textFiel("Entrer les coordonnées de depart du colis",
+                      "Lieu de depart", lieuDepControl, false),
                   SizedBox(height: 16),
-                  textFiel("Entrer la latitude et la longitude", "Lieu d'arrivé",
-                      false, lieuArrControl, false),
+                  textFiel("coordonnées du lieu d'arrivé", "Lieu d'arrivé",
+                      lieuArrControl, false),
                   SizedBox(height: 16),
-                  textFiel("Entrer la latitude et la longitude",
-                      "Nom du destinataire", false, nomDesControl, false),
+                  textFiel("Entrer le nom du recepteur du colis",
+                      "Nom du destinataire", nomDesControl, false),
                   SizedBox(height: 16),
-                  textFiel("Entrer le contact du recepteur", "contact", false,
+                  textFiel("Entrer le contact du recepteur", "contact",
                       contactControl, false),
                 ],
               ),
@@ -169,14 +204,25 @@ class _Create_deliveryState extends State<Create_delivery> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: onStepContinue,
-                        child: (isLastStep)
-                            ? const Text('Submit')
-                            : const Text('Next'),
-                      ),
-                    ),
+                    (isLastStep)
+                        ? Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()),
+                                );
+                              },
+                              child: const Text('Submit'),
+                            ),
+                          )
+                        : Expanded(
+                            child: ElevatedButton(
+                              onPressed: onStepContinue,
+                              child: const Text('Next'),
+                            ),
+                          ),
                     const SizedBox(
                       width: 10,
                     ),
@@ -191,35 +237,53 @@ class _Create_deliveryState extends State<Create_delivery> {
   }
 }
 
-// fonction permettant de creer les inputs
-Widget textFiel(String hintText, String label, bool select,
-    TextEditingController control, bool photo) {
+Widget textFiel(
+  String hintText,
+  String label,
+  TextEditingController control,
+  bool photo,
+) {
+  return TextFormField(
+    controller: control,
+
+    decoration: InputDecoration(
+      prefixIcon: photo ? Icon(Icons.add_a_photo) : null,
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(23)),
+      labelText: label,
+      hintText: hintText,
+    ),
+    // The validator receives the text that the user has entered.
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter some text';
+      }
+      return null;
+    },
+  );
+}
+
+Widget selectFiel(String hintText, String label, TextEditingController control,
+    bool photo, List<String> attribut) {
   String controller;
-  var items = [
-    'Working a lot harder',
-    'Being a lot smarter',
-    'Being a self-starter',
-    'Placed in charge of trading charter'
-  ];
+  var items = attribut;
 
   return TextFormField(
     controller: control,
+
     decoration: InputDecoration(
       prefixIcon: photo ? Icon(Icons.add_a_photo) : null,
-      suffixIcon: select
-          ? PopupMenuButton<String>(
-              icon: const Icon(Icons.arrow_drop_down),
-              onSelected: (String value) {
-                control.text = value;
-              },
-              itemBuilder: (BuildContext context) {
-                return items.map<PopupMenuItem<String>>((String value) {
-                  return new PopupMenuItem(
-                      child: new Text(value), value: value);
-                }).toList();
-              },
-            )
-          : null,
+      suffixIcon: PopupMenuButton<String>(
+        icon: const Icon(Icons.arrow_drop_down),
+        onSelected: (String value) {
+          control.text = value;
+        },
+        itemBuilder: (BuildContext context) {
+          return items.map<PopupMenuItem<String>>((String value) {
+            return new PopupMenuItem(child: new Text(value), value: value);
+          }).toList();
+        },
+      ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(23)),
       labelText: label,

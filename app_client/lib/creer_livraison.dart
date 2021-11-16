@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mel_app/Livreur.dart';
 
 class Create_delivery extends StatefulWidget {
   const Create_delivery({Key? key}) : super(key: key);
@@ -200,14 +201,25 @@ class _Create_deliveryState extends State<Create_delivery> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: onStepContinue,
-                        child: (isLastStep)
-                            ? const Text('Submit')
-                            : const Text('Next'),
-                      ),
-                    ),
+                    (isLastStep)
+                        ? Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()),
+                                );
+                              },
+                              child: const Text('Submit'),
+                            ),
+                          )
+                        : Expanded(
+                            child: ElevatedButton(
+                              onPressed: onStepContinue,
+                              child: const Text('Next'),
+                            ),
+                          ),
                     const SizedBox(
                       width: 10,
                     ),

@@ -66,7 +66,7 @@ class _FixerPrixState extends State<FixerPrix> {
                     information("Statut", "Postée"),
                     SizedBox(height: 30),
                     textFiel(
-                        "Payer", "Selectionner", true, payerControl, false),
+                        "Selectionner", "Payer", true, payerControl, false),
                     SizedBox(height: 30),
                     textFiel("Entrer le cout de la livraison", "Fixer le prix",
                         false, prixControl, false),
@@ -117,7 +117,6 @@ Widget information(String label, String value) {
   );
 }
 
-
 // fonction pour generer les inputs
 // fonction permettant de creer les inputs
 Widget textFiel(String hintText, String label, bool select,
@@ -126,7 +125,6 @@ Widget textFiel(String hintText, String label, bool select,
   var items = [
     'avant la livraison ',
     'Apres la livraison',
-    
   ];
 
   return TextFormField(
